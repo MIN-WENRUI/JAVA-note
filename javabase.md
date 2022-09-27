@@ -3675,6 +3675,77 @@ class Person{
 } 
 ```
 
+**类与对象内存分配机制**
+
+1.栈：一般存放基本数据类型(局部变量)
+
+2.堆：存放对象(数组等)
+
+3.方法区：常量池(字符串等)，类的加载信息
+
+```java
+public class object3{
+  public static void main(String[] args){
+      
+      Person p1 = new Person();
+      p1.age = 10;
+      p1.name = "亀田";
+      Person p2 = p1;
+      p1.age = 80;
+      System.out.println(p2.age);//80
+    }
+}
+class Person{
+    int age;
+    String name;
+    
+} 
+```
+
+![截屏2022-09-27 14.26.21](assets/%E6%88%AA%E5%B1%8F2022-09-27%2014.26.21.png)
+
+对象创建流程
+
+1.先加载person类信息
+
+2.在堆中分配空间，进行默认初始化，
+
+3.把地址赋给p，p指向对象
+
+4.进行指定初始化 
+
+## 成员方法传参机制
+
+在某些情况下，我们需要定义成员方法。比如人类除了一些属性以外还有一些行为，定义这些行为需要用到成员方法才能完成。
+
+```java
+public class Method{
+  public static void main(String[] args){
+      //方法调用，不调用不输出
+      //先创建对象，后调用
+      Person p1 = new Person();
+      p1.speak();//调用方法
+    
+    }
+}
+class Person{
+    String name;
+    int age;
+    //方法
+    //添加speak 成员方法，输出"良良い人ね”
+    /*
+    public表示方法公开
+    void表示方法没有返回值
+    speak():speak方法名 ()形参列表
+    {}方法体写要执行的代码
+    
+    */
+    public void speak(){
+        System.out.println("良い人ね");
+    }
+    
+} 
+```
 
 
 
@@ -3683,7 +3754,20 @@ class Person{
 
 
 
-成员方法传参机制
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 重载
 
