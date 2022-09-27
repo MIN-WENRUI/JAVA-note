@@ -3640,7 +3640,7 @@ public class object{
 
 **对象在内存中的存在形式**
 
-<img src="assets/截屏2022-09-27 14.26.21.png" alt="截屏2022-09-27 14.26.21" style="zoom:60%;" />
+![截屏2022-09-27 14.26.21](assets/%E6%88%AA%E5%B1%8F2022-09-27%2014.26.21.png)
 
 属性/成员变量
 
@@ -3650,7 +3650,30 @@ public class object{
 
 属性注意细节
 
-
+```java
+public class PropertiesDetail{
+  public static void main(String[] args){
+      //创建person对象
+      //p1是对象名（对象引用）
+      //new Person()创建的对象空间是真正对象
+      Person p1 = new Person();
+      
+      //对象的属性如果不赋值，遵守数组规则：
+      //int 0,short 0,byte 0,long 0,float 0.0,double 0.0,char \u000,boolean null
+      System.out.println("\n当前这个人的信息");
+      System.out.println("age" + p1.age + "name" + p1.name 
+                         + "sal=" + p1.sal + "isPass" + p1.isPass);
+      
+          
+    }
+}
+class Person{
+    int age;
+    String name;
+    double sal;
+    boolean isPass;
+} 
+```
 
 
 
