@@ -3588,7 +3588,7 @@ public class BubbleSort{
 }
 ```
 
-# 面向对象
+# 面向对象(object oriented)
 
 ## 类与对象
 
@@ -3747,17 +3747,147 @@ class Person{
 } 
 ```
 
+方法的调用机制
 
+1.当程序执行到方法时，就会开辟一个独立的空间（栈）
 
+2.当方法执行完毕，或者执行到return语句时，就会返回
 
+3.返回到调用方法的地方
 
+4.返回后，继续执行方法后面的代码
 
+5.当main方法(栈)执行完毕后，整个程序退出
 
+![截屏2022-09-27 14.26.21](assets/%E6%88%AA%E5%B1%8F2022-09-27%2014.26.21.png)
 
+成员方法
 
+```java
+public class Method02{
+  public static void main(String[] args){
+      
+      //请遍历一个数组，输出数组的各个元素值
+      int [][] map = {{0,0,1},{1,1,1},{1,1,3}};
+      
+      Mytools tool = new Mytools();//创建tool对象
+      
+      //遍历map数组
+     /* for(int i = 0;i < map.length;i++){
+          for(int j = 0;j < map[i].length;j++){
+              System.out.pritnln(map[i][j] + "");
+          }
+          System.out.println();
+      }
+      */
+      tool.printArr(map);
+      //当要求再次遍历时
+      /*for(int i = 0;i < map.length;i++){
+          for(int j = 0;j < map[i].length;j++){
+              System.out.pritnln(map[i][j] + "");
+          }
+          System.out.println();
+      }*/
+      tool.printArr(map);
+      
+    }    
+} 
+//把输出的功能，写到一个类的方法中，调用即可
+class Mytools{
+    //
+    public void printArr(int[][] map){
+        System.out.println("======")
+        for(int i = 0;i < map.length;i++){
+          for(int j = 0;j < map[i].length;j++){
+              System.out.pritnln(map[i][j] + "\t");
+          }
+          System.out.println();
+      }
+    }
+}
+/*
+提高代码的复用性
+可以将实现的细节封装起来，然后供其他用户来调用即可
+得以关注业务逻辑
+*/
+```
 
+成员方法的定义
 
+```java
+public(访问修饰符) 返回数据类型 方法名 (形参列表) {//方法体
+   语句;
+   return 返回值;
+}
+1.形参列表：表示成员方法的输入 call(int n),getSum(int num1,int num2)
+2.返回数据类型：表示成员方法的输出，void代表没有返回值
+3.方法主体：实现功能的代码块
+4.return语句不是必须的
+```
 
+方法使用细节
+
+**访问修饰符**(作用时控制 方法使用的范围)可不写【有四种：public，protected，默认，private】
+
+返回数据类型
+
+1.一个方法最多有一个返回值，如果有多个返回值则返回数组
+
+2.返回类型可以为任意类型，包括基本类型或引用类型（数组，对象）
+
+```java
+public class MethodDetail{
+  public static void main(String[] args){
+      //1.一个方法最多有一个返回值
+      AA a = new AA();
+      int[] res = a.getSumAndSub(1,4);
+      System.out.pritnln("和" + res[0]);
+      System.out.pritnln("差" + res[1]);
+    }
+}
+class AA{
+    public int[] getSumAndSub(int n1,int n2){
+        
+        int[] resArr = new int[2];//创建一个数组
+        resArr[0] = n1 + n2;
+        resArr[1] = n1 - n2;
+        return resArr;
+    }
+    
+    //3.如果方法要求有返回数据类型，则方法体中最后的执行语句必须为return值；
+    //而且要求返回值类型必须和return的值类型一致或兼容
+    
+    public double f1() {
+        double d1 = 1.1 * 3;
+        int n = 100;
+        return n;//int -> double ok 兼容
+    }
+    //如果方法时void，则方法中可以没有return语句，或者只写return
+    //关于方法名：符合驼峰命名法，见名知义
+    public void f2() {
+        System.out.println("hello1");
+        System.out.println("hello1");
+        int n = 10;
+        return;//可不写
+    }
+}
+```
+
+**形参列表**
+
+1.一个方法可以有0个参数，也可以有多个参数，中间用逗号间隔 getSum(int n1,int n2)
+
+2.参数类型可以为任意类型，包含基本类型或引用类型，比如printArr（int [] [] map)
+
+3.调用带参数的方法时，一定对应着参数列表传入相同类型或兼容类型的参数
+
+4.方法定义时的参数称为形式参数，简称形参；方法调用时传入的参数称为实际参数，简称实参
+
+实参和形参的类型要一致或兼容。个数和顺序必须一致。
+
+方法体
+
+里面写完成功的具体语句，可以为输入，输出，变量，运算，分支，循环，方法调用，但里面不能再定义方法；即方法不能嵌套定义
 
 
 
