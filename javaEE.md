@@ -3644,7 +3644,7 @@ public class object{
 
 ### 属性/成员变量
 
-1.成员变量 = 属性 = field
+1.成员变量 = 属性 = field =字段
 
 2.属性是类的一个组成部分，一般是基本数据类型，也可以是引用类型(对象，数组)
 
@@ -3767,7 +3767,7 @@ class Person{
 
 5.当main方法(栈)执行完毕后，整个程序退出
 
-![截屏2022-09-27 14.26.21](assets/%E6%88%AA%E5%B1%8F2022-09-27%2014.26.21.png)
+<img src="assets/%E6%88%AA%E5%B1%8F2022-09-29%2013.37.46.png" alt="截屏2022-09-29 13.37.46" style="zoom:50%;" />
 
 ###方法的妙用
 
@@ -4160,7 +4160,7 @@ class T{
 }
 ```
 
-![截屏2022-09-27 14.26.21](assets/%E6%88%AA%E5%B1%8F2022-09-27%2014.26.21.png)
+<img src="assets/%E6%88%AA%E5%B1%8F2022-09-30%2017.35.53.png" alt="截屏2022-09-30 17.35.53" style="zoom: 67%;" />
 
 递归的重要规则
 
@@ -4409,7 +4409,7 @@ java中允许同一个类中多个同名方法到存在，但要求形参列表�
 
 比如：System.out.println();out是PrintStream类型 //字段 = 属性
 
-好处1）减轻了起名记名的麻烦
+好处: 减轻了起名记名的麻烦
 
 ```java
 public class OverLoad01{
@@ -5041,19 +5041,425 @@ class Book{
 */
 ```
 
+```java
+public class H04{
+    public static void main(String[] args){
+       int[] oldArr = {10,30,50};
+       A03 a = new A03();
+       int newArr = a.copyArr(oldArr);
+       //遍历新 的验证
+        System.out.println("新数组")
+       for(int i =0;i < newArr.length;i++){
+           System.out.print(newArr[i] + "\t");
+       }
+    }
+}
+class A03{
+    public int[] copyArr(int[] oldArr){
+        //在堆中，创建一个长度为oldArr.length数组
+        int[] newArr = new int[oldArr.length];
+        //遍历旧数组，将元素拷贝到新数组
+        for(int i = 0;i < oldArr.length;i++){
+            newArr[i] = oldArr[i];
+        }
+        return newArr;
+    }
+}
+/*
+编写类A03，实现数组的复制功能copyArr，输入旧数组，返回一个新数组，元素与旧数组一样
+*/
+```
 
+```java
+public class H05{
+    public static void main(String[] args){
+       Circle circle = new Circle(5);
+       System.out.println(circle.area());
+       System.out.println(circle.len());
+    }
+}
+/*
+定义一个圆类Circle，定义半径，提供显示圆周长功能的方法，提供显示圆面积的方法
+*/
+class Circle{
+    double radius;
+    public Circle(double radius){
+        this.radius = radius;
+    }
+    
+    public double area(){
+        return Math.PI * radius * radius;
+    }
+    
+    public double len(){
+        return 2 * Math.PI * radius;
+    }
+}
+```
 
+```java
+public class H06{
+    public static void main(String[] args){
+        Cale cale= new Cale(2,0);
+        System.out.println(cale.sum());
+        System.out.println(cale.minus());
+        System.out.println(cale.mul());
+        Double divRes = cale.div();
+        if(dives != null){
+           System.out.println(divres); 
+        }
+        
+    }
+}
+/*
+编程创建一个Cale计算类，在其中定义2个变量表示两个操作数
+定义四个方法实现求和，差，乘，商(要求除数为0的话要提示)并创建两个对象，分别测试
+*/
+class Cale{
+    double num1;
+    double num2;
+    public Cale(double num1,double num2){
+        this.num1 = num1;
+        this.num2 = num2;
+    }
+    //和
+    public double sum(){
+        return num1 + num2;
+    }
+    //差
+    public double minus(){
+        return num1 - num2;
+    }
+    //乘
+    public double mul(){
+        return num1 * num2;
+    }
+    //除
+    public Double div(){
+        if(num2 == 0){
+            System.out.println("除数不能为0");
+            return null;
+        }else{
+            return num1 / num2;
+        }
+        
+    }
+}
+```
 
+```java
+public class H07{
+    public static void main(String[] args){
+        Dog dog = new Dog("tom","yellow",7);
+        dog.show();
+    }
+}
+/*
+设计一个Dog类，有名字，颜色，和年龄属性，定义输出方法show()显示信息，并创建对象，进行测试
+*/
+class Dog{
+  String name;
+  String color;
+  int age;
+  public Dog(String name,String color,int age){
+      this.name = name;
+      this.color = color;
+      this.age = age;
+  }
+    public void show(){
+        System.out.println("显示信息");
+        System.out.println(this.name + "\t" + this.age + "\t" + this.color);
+    }
+}
+```
 
+```java
+public class Test{
+    int count = 9;//属性
+    public void count1(){//Test类的成员方法
+        count = 10;
+        System.out.println("count1" + count);
+    }
+    public void count2(){//Test类的成员方法
+       System.out.println("count1" + count++);
+    }
+    //任何一个类都有main方法
+    public static void main(String[] args){
+        /*
+        1.new Test()匿名对象 使用后不能再使用
+        2.new Test().count1()创建好匿名对象后就调用count1()
+        
+        */
+        new Test().count1();
+        
+        Test t1 = new Test();
+        t1.count2();
+        t1.count2();
+    }
+}
+```
 
+```java
+public class H09{
+    public static void main(String[] args){
+       Music music = new Music("笑傲江湖"，300);
+       mucis.play();
+       System.out.println(music.getInfo());
+    }
+}
+/*
+定义music类。里面有音乐名name，音乐时长times属性
+并有播放play功能和返回本身属性信息的功能方法getInfo
+*/
+class Music{
+    String name;
+    int times;
+    public Music(String name,int times){
+        this.name = name;
+        this.times = times;
+    }
+    public void play(){
+        System.out.println("音乐"  + name + "播放时长" + times);
+    }
+    public String getInfo(){
+        return "音乐"  + name + "播放时长" + times;
+    }
+}
+```
 
+```java
+public class H11{
+    public static void main(String[] args){
+      
+    }
+}
+/*
+在测试方法中，调用method方法，代码如下，编译正确，试写出method方法的定义形式
+调用语句为System.out.println(method(10.0,20.0),100));
+反推定义形式
+public double method(double d1,doubl2 d2)
+*/
+```
 
+```java
+public class H12{
+    public static void main(String[] args){
+      
+    }
+}
+/*
+创建一个Employee类
+属性有(名字，性别，年龄，职位，薪水)，提供三个构造方法，可以初始化
+1.(名字，性别，年龄，职位，薪水)。
+2.(名字，性别，年龄)3.(职位，薪水)要求充分复用构造器
+*/
+class Employee{
+    String name;
+    char gender;
+    int age;
+    String job;
+    double sal;
+    //因为要求可以复用构造器，先写属性少的构造器
+    public Employee(String job,double sal){
+        this.job = job;
+        this.sal = sal;
+    }
+    public Employee(String name,char gender,int age){
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+    }
+    public Employee(String name,char gender,int age,String job,double sal){
+        this(name,gender,age);
+        this.job = job;
+        this.sal = sal;
+    }
+}
+```
 
+```java
+public class H13{
+    public static void main(String[] args){
+      Circle c = new Circle();
+      PassObject op = new PassObject;
+      op.printAreas(c,5);
+    }
+}
+/*
+题目要求
+1.定义一个Circle类，包含一个double型的radius属性代表圆的半径，findArea()方法返回圆 的面积
+2.定义一个类PassObject，在类中定义一个方法printArea(),该方法的定义如下：
+public void printAreas(Circle c ,int times)
+3.在printAreas方法中打印输出1到times之间的每个整数半径值，以及对应的面积。
+例如times为5，则输出半径1，2，3，4，5以及对应的圆面积
+4.在main方法中调用printAreas()方法，调用完毕后输出当前半径。程序运行输出结果如图所示
+*/
+class Circle{
+    double radius;
+    //public Circle(radius){
+        //this.radius = radius;
+    //}
+    public double findArea(){
+        return Math.PI * radius * radius;
+    }
+    public void setRadius(double radius){//添加方法setRadius，修改对象半径值
+        this.radius = radius;
+    }
+ 
+}
+class PassObject{
+    public void printAreas(Circle c ,int times){
+        System.out.println("radius\tarea");
+        for(int i = 1;i <= times;i++){//输出1到times之间的每个整数半径值
+            c.setRadius(i);//修改半径值
+            System.out.println((double)i + "\t" + c.findArea());
+        }
+    }
+}
+```
 
-
-
-
-
-
-
+```java
+import java.util.Random;
+import java.util.Scanner;
+/*
+请编写一个猜拳的游戏
+有个人Tom 对象，设计他的成员变量. 成员方法, 可以电脑猜拳. 电脑每次都会随机生成 0, 1, 2
+0 表示 石头 1 表示剪刀 2 表示 布
+并要可以显示 Tom的输赢次数（清单）, 假定 玩三次.
+ */
+// 测试类,主类
+public class test {
+ 
+    // 测试
+    public static void main(String[] args) {
+        // 创建一个玩家对象
+        Tom t = new Tom();
+        // 用来记录最后输赢的次数
+        int isWinCount = 0;
+ 
+        // 创建一个二维数组，用来接收局数，Tom出拳情况以及电脑出拳情况
+        int[][] arr1 = new int[3][3];
+        int j = 0;
+ 
+        // 创建一个一维数组，用来接收输赢情况
+        String[] arr2 = new String[3];
+ 
+        Scanner scanner = new Scanner(System.in);
+        for (int i = 0; i < 3; i++) {   //比赛3次
+            System.out.println("请输入你要出的拳（0-拳头，1-剪刀，2-布）：");
+            int num = scanner.nextInt();
+            t.setTomGuessNum(num);
+            int tomGuess = t.getTomGuessNum();
+            arr1[i][j + 1] = tomGuess;//出的情况汇总的二维表格中
+ 
+            // 获取电脑出的拳
+            int comGuess = t.computerNum();
+            arr1[i][j + 2] = comGuess;
+ 
+            // 将玩家猜的拳与电脑做比较
+            String isWin = t.vsComputer();
+            arr2[i] = isWin;
+            arr1[i][j] = t.count;
+ 
+            // 对每一局的情况进行输出
+            System.out.println("=========================================");
+            System.out.println("局数\t玩家的出拳\t电脑的出拳\t输赢情况");
+            System.out.println(t.count + "\t" + tomGuess + "\t\t" + comGuess + "\t\t" + t.vsComputer());
+            System.out.println("=========================================");
+            System.out.println("\n\n");
+            isWinCount = t.winCount(isWin);
+        }
+        scanner.close();//关闭扫描器，它一直在占用资源，因此使用完毕后要关闭
+ 
+        // 对游戏的最终结果进行输出（二维表格）
+        System.out.println("局数\t玩家的出拳\t电脑的出拳\t\t输赢情况");
+        for (int a = 0; a < arr1.length; a++) {
+            for (int b = 0; b < arr1[a].length; b++) {
+                System.out.print(arr1[a][b] + "\t\t\t");
+            }
+ 
+            System.out.print(arr2[a]);
+            System.out.println();
+        }
+        System.out.println("你赢了" + isWinCount + "次");
+    }
+ 
+}
+ 
+// Tom类
+class Tom {     // 核心代码
+    // 玩家出拳的类型
+    int tomGuessNum; //0,1,2
+    // 电脑出拳的类型
+    int comGuessNum; //0,1,2
+    // 玩家赢的次数
+    int winCountNum;
+    // 比赛的次数
+    int count = 1;   //一共比赛3次
+ 
+ 
+    public void showInfo() {//默认构造器可以省略
+        //....
+    }
+ 
+    /**
+     * 电脑随机生成猜拳的数字的方法
+     * @return
+     */
+    public int computerNum() {
+        Random r = new Random();
+        comGuessNum = r.nextInt(3);      // 方法 返回 0-2的随机数
+        // System.out.println(comGuessNum);
+        return comGuessNum;
+    }
+ 
+    /**
+     * 设置玩家猜拳的数字的方法
+     * @param tomGuessNum
+     */
+    public void setTomGuessNum(int tomGuessNum) {
+        if (tomGuessNum > 2 || tomGuessNum < 0) {
+            //抛出一个异常, 李同学会写，没有处理
+            throw new IllegalArgumentException("数字输入错误");//抛出的异常表示向方法传递了一个不合法的参数
+        }
+        this.tomGuessNum = tomGuessNum;
+    }
+ 
+    public int getTomGuessNum() {
+        return tomGuessNum;
+    }
+ 
+    /**
+     * 比较猜拳的结果
+     * @return 玩家赢返回true，否则返回false
+     */
+    public String vsComputer() {
+        //比较巧
+        if (tomGuessNum == 0 && comGuessNum == 1) {
+            return "你赢了";
+        } else if (tomGuessNum == 1 && comGuessNum == 2) {
+            return "你赢了";
+        } else if (tomGuessNum == 2 && comGuessNum == 0) {
+            return "你赢了";
+        } else if (tomGuessNum == comGuessNum){
+            return "平手";
+        } else {
+            return "你输了";
+        }
+    }
+ 
+    /**
+     * 记录玩家赢的次数
+     * @return
+     */
+    public int winCount(String s) {
+        count++;    //控制玩的次数
+        if (s.equals("你赢了")) {     //统计赢的次数
+            winCountNum++;
+        }
+        return winCountNum;
+    }
+ 
+}
+```
 
