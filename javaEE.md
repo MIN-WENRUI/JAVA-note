@@ -3721,7 +3721,7 @@ class Person{
 
 4.进行指定初始化 
 
-## 成员方法传参机制
+##成员方法
 
 ###成员方法
 
@@ -3994,12 +3994,13 @@ class AA{
             System.out.println();
         }
     }
-}
+
+ **成员方法的传参机制**
 ```
 
-###**方法的传参机制**
+## **成员方法的传参机制**
 
-基本数据类型的传参机制
+###基本数据类型的传参机制
 
 ```java
 public class MethodParameter{
@@ -4029,7 +4030,7 @@ class AA{
 //基本数据类型，传递的是值拷贝，形参的任何变化不影响实参
 ```
 
-引用数据类型的传参机制
+###引用数据类型的传参机制
 
 ```java
 public class MethodParameter02{
@@ -4081,9 +4082,10 @@ class B{
    
 }
 //引用类型传递的是地址，可以通过形参影响实参
+
 ```
 
-####克隆对象
+###克隆对象
 
 ```java
 public class MethodParameter02{
@@ -4126,7 +4128,7 @@ class MyTools{
 }
 ```
 
-###方法递归调用
+##方法递归调用
 
 递归就是自己调用自己，每次调用时传入不同的变量。递归有助于解决复杂问题，同时使代码简洁。
 
@@ -4163,7 +4165,7 @@ class T{
 
 <img src="assets/%E6%88%AA%E5%B1%8F2022-09-30%2017.35.53.png" alt="截屏2022-09-30 17.35.53" style="zoom: 67%;" />
 
-递归的重要规则
+###递归的重要规则
 
 1.执行一个方法时，就创建一个新的受保护的独立空间（栈空间）
 
@@ -4175,7 +4177,7 @@ class T{
 
 5.当一个方法执行完毕，或者遇到return，就会返回，遵守谁调用，就将结果返回给谁，同时当方法执行完毕或者返回时，该方法也就执行完毕。
 
-递归斐波那契与猴子吃桃
+###递归斐波那契与猴子吃桃
 
 ```java
 public class RecursionExercise01{
@@ -4239,7 +4241,7 @@ class T{
 }
 ```
 
-老鼠出迷宫
+###老鼠出迷宫
 
 ```java
 public class MiGong{
@@ -4359,7 +4361,7 @@ class T{
 //2.图 佛洛依德
 ```
 
-汉诺塔
+###汉诺塔
 
 ```java
 public class HanoiTower{
@@ -4388,7 +4390,7 @@ class Tower{
 
 ```
 
-八皇后
+###八皇后
 
 ```java
 public class HanoiTower{
@@ -4404,13 +4406,15 @@ class Tower{
 
 ```
 
-## 重载(overload)
+## 方法重载(overload)
 
 java中允许同一个类中多个同名方法到存在，但要求形参列表不一致
 
 比如：System.out.println();out是PrintStream类型 //字段 = 属性
 
-好处: 减轻了起名记名的麻烦
+###重载的好处
+
+: 减轻了起名记名的麻烦
 
 ```java
 public class OverLoad01{
@@ -4459,7 +4463,7 @@ class MyCalculator{
 */
 ```
 
-练习
+###练习
 
 ```java
 public class OverLoadExercise{
@@ -4513,7 +4517,7 @@ class Methods{
 
 java允许将同一个类中多个同名同功能但参数个数不同的方法，封装成一个方法。就可以通过可变参数来实现。
 
-基本语法
+###基本语法
 
 访问修饰符 返回类型 方法名（数据类型...形参名）{
 
@@ -4571,7 +4575,7 @@ class T{
 }
 ```
 
-练习
+###练习
 
 ```java
 public class VarParameterExercise{
@@ -4598,6 +4602,8 @@ class HspMethod{
 ```
 
 ## **作用域**
+
+###基本使用
 
 1.在Java中，主要的变量就是属性（成员变量）和局部变量。
 
@@ -4634,6 +4640,8 @@ class Cat{
     }
 }
 ```
+
+###细节
 
 ```java
 public class VarScopeDetail{
@@ -4766,7 +4774,7 @@ class Person{
 }
 ```
 
-练习
+###练习
 
 ```java
 public class ConstructorDetail{
@@ -4799,7 +4807,7 @@ class Person{
 
 ```
 
-对象创建流程分析
+##对象创建流程分析
 
 ```java
 class Person{
@@ -4827,7 +4835,7 @@ Person p = new Perosn("小倩"，20);
 
 4.对象在堆中的地址返回给p
 
-## this
+## this关键字
 
 ```java
 public class This01{
@@ -4856,7 +4864,7 @@ class Dog{
 }
 ```
 
-this解决变量命名问题
+###this解决变量命名问题
 
 this关键字的理解:简单来说，哪个对象调用，this就代表哪个对象
 
@@ -4910,7 +4918,7 @@ class T{
 }
 ```
 
-练习
+###练习
 
 ```java
 public class TestPerson{
@@ -4942,7 +4950,7 @@ class Person{
 }
 ```
 
-面向对象练习
+##面向对象基础的练习
 
 ```java
 public class H01{
@@ -5464,9 +5472,11 @@ class Tom {     // 核心代码
 }
 ```
 
-#包
+# 面向对象中级
 
-##包的三大作用
+##包
+
+###包的三大作用
 
 1.区分相同名字的类
 
@@ -5474,7 +5484,7 @@ class Tom {     // 核心代码
 
 3.控制访问范围
 
-##包的基本语法
+###包的基本语法
 
 ```java
 package com.kamedaken.edu
@@ -5483,13 +5493,13 @@ package com.kamedaken.edu
     2.com.kamedaken.edu：表示包名
 ```
 
-##包的本质分析
+###包的本质分析
 
 包的本质就是创建不同的文件夹/目录保存类文件
 
 ![截屏2022-10-13 14.50.52](assets/%E6%88%AA%E5%B1%8F2022-10-13%2014.50.52.png)
 
-##包的命名规则
+###包的命名规则
 
 只能包含数字，字母，小圆点，但不能使用数字开头，不能是关键字保留字
 
@@ -5499,7 +5509,9 @@ package com.kamedaken.edu
 
 com.公司名.项目名.业务模块名 比如：com.sina.crm.utils com.sina.crm.order
 
-一个包下,包含很多的类,java 中常用的包有:
+一个包下,包含很多的类,java 中
+
+###常用的包:
 
 1) java.lang.* //lang 包是基本包，默认引入，不需要再引入.
 
@@ -5511,13 +5523,13 @@ com.公司名.项目名.业务模块名 比如：com.sina.crm.utils com.sina.crm
 
     
 
-如何引入包
+###如何引入包
 
 1.package的作用是声明当前类所在的包，需要放在类的最上面，一个类中最多只有一句package
 
 2.import指令位置放在package的下面，在类定义面前，可以有多句没有顺序要求
 
-访问修饰符
+##访问修饰符
 
 java 提供四种访问控制修饰符号，用于控制方法和属性(成员变量)的访问权限
 
@@ -5526,9 +5538,11 @@ java 提供四种访问控制修饰符号，用于控制方法和属性(成员�
  \3) 默认级别:没有修饰符号,向同一个包的类公开.
  \4) 私有级别:用private修饰,只有类本身可以访问,不对外公开
 
-4种访问修饰符的访问范围
+###4种访问修饰符的访问范围
 
 ![截屏2022-10-13 15.54.23](assets/%E6%88%AA%E5%B1%8F2022-10-13%2015.54.23.png)
+
+###注意事项与细节
 
 1.修饰符可以用来修饰类中的属性，成员变量以及类
 
@@ -5538,21 +5552,25 @@ java 提供四种访问控制修饰符号，用于控制方法和属性(成员�
 
 4.成员方法的访问规则和属性完全一样
 
-🚩面向对象的三大特征
+##🚩面向对象的三大特征
 
-面向对象编程有三大特征：封装，特征和多态
 
-封装(encapsulation) 就是把抽象出的数据【属性】和对数据操作【方法】封装在一起，数据被保护在内部，
+
+面向对象编程有三大特征：封装，继承和多态
+
+###封装(encapsulation)
+
+就是把抽象出的数据【属性】和对数据操作【方法】封装在一起，数据被保护在内部，
 
 程序的其他部分只有通过被授权的操作【方法】，才能对数据进行操作。
 
-封装的理解和好处
+####封装的理解和好处
 
 1.隐藏实现细节：方法【连接数据库】<-- 调用（传入参数）
 
 2.可以对数据进行验证，保证安全合理
 
-封装的实现步骤
+####封装的实现步骤
 
 1.将属性进行私有化private【不能直接修改属性】
 
@@ -5723,11 +5741,13 @@ public class Account {
 
 ```
 
-继承
+###继承
 
 继承可以解决代码复用,让我们的编程更加靠近人类思维.当多个类存在相同的属性(变量)和方法时,可以从这些类中 抽象出父类,在父类中定义这些相同的属性和方法，所有的子类不需要重新定义这些属性和方法，只需要通过 extends 来 声明继承父类即可。画出继承的示意图
 
 <img src="assets/%E6%88%AA%E5%B1%8F2022-10-14%2015.28.04.png" alt="截屏2022-10-14 15.28.04" style="zoom:67%;" />
+
+####继承基本语法
 
 ```java
 class 子类 extends 父类{
@@ -5737,13 +5757,13 @@ class 子类 extends 父类{
 }
 ```
 
-继承给编码带来的便利
+####继承给编码带来的便利
 
 1) 代码的复用性提高了
 
 2) 代码的扩展性和维护性提高了
 
-继承的深入讨论
+####继承的深入讨论
 
 **因为子类要继承父类的属性与方法，就必须完成父类的初始化**
 
@@ -5756,4 +5776,2808 @@ class 子类 extends 父类{
 7. java 所有类都是 Object 类的子类, Object 是所有类的基类.
 8. 父类构造器的调用不限于直接父类!将一直往上追溯直到Object类(顶级父类)
 9. 子类最多只能继承一个父类(指直接继承)，即java中是**单继承机制**。思考:如何让A类继承B类和C类? 【A 继承 B， B继承C】
-10. 不能滥用继承，子类和父类之间必须满足 is-a 的逻辑关系
+10. 不能滥用继承，子类和父类之间必须满足 is-a 的逻辑关系。
+
+#### 继承的本质分析（重要）
+
+继承的本周就是建立一种查找关系
+
+![截屏2022-10-18 19.36.36](assets/%E6%88%AA%E5%B1%8F2022-10-18%2019.36.36.png)
+
+#### 继承课堂练习
+
+### SUPER关键字
+
+#### 基本介绍
+
+super代表父类的引用，用于访问父类的属性，方法，构造器。
+
+#### 基本语法
+
+```java
+1.访问父类的属性，但不能访问父类的private属性
+    super.属性名
+2.访问父类的方法，不能访问父类的private方法
+    super.方法名(参数列表)；
+3.访问父类的构造器
+    super(参数列表);只能放在构造器的第一句，只能出现一句
+```
+
+#### super给编程带来的便利和细节
+
+1.调用父类构造器的好处(分工明确，父类属性由父类初始化，子类属性由子类初始化)
+
+2.当子类中有和父类中的成员（属性和方法）重名时，为了访问父类的成员，必须通过super。如果没有重名，使用super，this，直接访问是一样的效果
+
+3.super的访问不限于直接父类，如果爷爷类和本类中有同名的成员，必须通过super去访问爷爷类的成员；
+
+如果多个基类中有同名的成员，使用super访问遵循就近原则。当然也需要访问权限的相关规则。 
+
+#### super和this的比较
+
+![截屏2022-10-20 17.12.24](assets/%E6%88%AA%E5%B1%8F2022-10-20%2017.12.24.png)
+
+### 方法重写/覆盖
+
+简单的说：方法覆盖就是子类有一个方法，和父类的某个方法的名称，返回类型，参数一样，那么就说子类这个方法覆盖了父类的方法
+
+####注意事项及使用细节
+
+1.子类的方法的形参列表，方法名称，要和父类方法的形参列表，方法名称完全一样
+
+2.子类方法的返回类型要和父类方法的返回类型一样，或者父类返回类型的子类。
+
+例如父类的返回类型是Object，子类的返回类型是String
+
+3.子类方法不能缩小父类方法的访问权限
+
+#### 重写与重载的比较
+
+![截屏2022-10-20 20.56.16](assets/%E6%88%AA%E5%B1%8F2022-10-20%2020.56.16.png)
+
+### 多态
+
+方法或对象具有多种形态。是面向对象的第三大特征，多态是建立在封装和继承基础之上的。
+
+#### 方法的多态
+
+重写或重载就体现多态
+
+```java
+package com.kamadaken.pkg.poly_;
+
+public class PloyMethod {
+    public static void main(String[] args) {
+        //方法重载体现多态
+        A a = new A();
+        System.out.println(a.sum(10, 20));
+        System.out.println(a.sum(10, 20, 30));
+        //通过传入不同参数，就会调用sum方法，就体现多态
+
+        //方法重写体现多态
+        B b = new B();
+        a.say();
+        b.say();
+
+
+    }
+
+}
+
+class B {
+    public void say() {
+        System.out.println("B say()方法被调用。。。");
+    }
+}
+
+class A extends B {
+    public int sum(int n1, int n2) {
+        return n1 + n2;
+    }
+
+    public int sum(int n1, int n2, int n3) {
+        return n1 + n2 + n3;
+    }
+
+    public void say() {
+        System.out.println("A say()方法被调用。。。");
+    }
+}
+```
+
+#### 对象的多态（核心 困难）
+
+1）一个对象的编译类型和运行类型可以不一致
+
+2）编译类型在定义对象时，就确定了不能改变
+
+3）运行类型是可以变化的
+
+4）编译类型看定义时=号 的左边，运行类型看= 号的右边
+
+访问对象属性时看编译类型
+
+z调用方法按运行类型查找方法
+
+#### 快速入门
+
+```java
+package com.kamadaken.pkg.poly_;
+
+public class Poly01 {
+    public static void main(String[] args) {
+        Master tom = new Master("Tom");
+        Dog dog = new Dog("Dahuang");
+        Bone bone = new Bone("bone");
+        tom.feed(dog,bone);
+
+        Cat cat = new Cat("Jerry");
+        Fish fish = new Fish("サーモン");
+        System.out.println("==========");
+        tom.feed(cat,fish);
+
+        Pig pig = new Pig("pig");
+        Rice rice = new Rice("rice");
+        System.out.println("=========");
+        tom.feed(pig,rice);
+        
+    }
+}
+package com.kamadaken.pkg.poly_;
+
+public class Animal {
+    private String name;
+
+    public Animal(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+package com.kamadaken.pkg.poly_;
+
+public class Food {
+    private String name;
+
+    public Food(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+package com.kamadaken.pkg.poly_;
+
+public class Master {
+    private String name;
+
+    public Master(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    //使用多态机制，可以统一的管理主人喂食到问题
+    //animal编译类型是Animal,可以指向Animal子类的对象
+
+    public void feed(Animal animal,Food food){
+        System.out.println("主人" + name + "给" + animal.getName() + "吃" + food.getName());
+
+    }
+
+
+    //主人给小狗喂骨头
+
+//    public void feed(Dog dog, Bone bone) {
+//        System.out.println("主人" + name + "给" + dog.getName() + "吃" + bone.getName());
+//    }
+//    //给小猫吃黄花鱼
+//    public void feed(Cat cat,Fish fish){
+//        System.out.println("主人" + name + "给" + cat.getName() + "吃" + fish.getName());
+//    }
+}
+package com.kamadaken.pkg.poly_;
+
+public class Dog extends Animal{
+    public Dog(String name) {
+        super(name);
+    }
+}
+package com.kamadaken.pkg.poly_;
+
+public class Cat extends Animal{
+    public Cat(String name) {
+        super(name);
+    }
+}
+package com.kamadaken.pkg.poly_;
+
+
+
+public class Pig extends Animal {
+    public Pig(String name) {
+        super(name);
+    }
+}
+package com.kamadaken.pkg.poly_;
+
+public class Bone extends Food{
+    public Bone(String name) {
+        super(name);
+    }
+}
+package com.kamadaken.pkg.poly_;
+
+public class Fish extends Food {
+    public Fish(String name) {
+        super(name);
+    }
+}
+package com.kamadaken.pkg.poly_;
+
+public class Rice extends Food {
+    public Rice(String name) {
+        super(name);
+    }
+}
+```
+
+#### 多态的注意事项与细节讨论
+
+多态的**前提**是：两个对象存在继承关系。
+
+##### 多态的向上转型
+
+1.本质：父类的引用指向了子类的对象。
+
+2.语法：父类类型 引用名 = new子类类型（）；
+
+3.特点：
+
+```
+可以调用父类的所有成员（需要遵守访问权限）
+但是不能调用子类的特有成员
+因为在编译阶段，能调用那些成员，是由编译类型决定的
+最终运行效果看子类（运行类型）的具体实现，即调用方法时，按照子类开始查找方法
+然后调用，规则与方法的调用规则一致
+```
+
+##### 多态的向下转型
+
+语法：子类类型 引用名 = （子类类型） **父类引用**；
+
+只能强转父类的引用，但不能强转父类的对象
+
+要求父类的引用必须指向的是当前目标的对象
+
+当向下转型时，可以调用子类类型中所有成员
+
+#####instanceOf比较操作符
+
+用于判断对象的运行类型是否为XX类型或XX类型的子类型
+
+#### 练习
+
+![截屏2022-10-22 14.22.02](assets/%E6%88%AA%E5%B1%8F2022-10-22%2014.22.02.png)
+
+<img src="assets/%E6%88%AA%E5%B1%8F2022-10-22%2014.23.44.png" alt="截屏2022-10-22 14.23.44" style="zoom:67%;" />
+
+#### 🚩java的动态绑定机制
+
+```java
+package com.kamadaken.pkg.poly_.dynamic_;
+
+public class DynamicBinding {
+    public static void main(String[] args) {
+        //a的编译类型A，运行类型B
+        A a = new B();//向上转型
+        System.out.println(a.sum());
+        System.out.println(a.sum1());
+
+    }
+}
+
+class A {//父类
+    public int i = 10;
+    /*动态绑定机制：
+    1 当调用对象方法的时候，该方法会和对象的内存地址/运行类型绑定
+    2 当调用对象属性时，没有动态绑定机制，哪里声明哪里使用
+     */
+    public int sum() {
+        return getI() + 10;
+    }
+
+    public int sum1() {
+        return i + 10;
+    }
+
+    public int getI() {
+        return i;
+    }
+
+}
+
+class B extends A {
+    public int i = 20;
+
+    //    public int sum(){
+//        return i+ 20;
+//    }
+    public int getI() {
+        return i;
+    }
+//    public int sum1(){
+//        return i + 10;
+//    }
+}
+```
+
+#### 多态的应用
+
+#####多态数组
+
+```java
+package com.kamadaken.pkg.poly_.polyarr_;
+
+
+ public class PolyArray {
+    public static void main(String[] args) {
+        //应用实例：现有一个继承结构如下：要求创建一个Person对象
+        //2个Student 对象和2个teacher对象，统一放在数组中，并调用每个对象say方法
+        Perosn[] persons = new Perosn[5];
+        persons[0] = new Perosn("jack", 20);
+        persons[1] = new Student("MIN", 24, 100);
+        persons[2] = new Student("smith", 30, 45);
+        persons[3] = new Teacher("scott", 40, 25000);
+        persons[4] = new Teacher("Kameda", 62, 1500000);
+
+        //循环遍历多态数组，调用say
+        for (int i = 0; i < persons.length; i++) {
+            //person[i] 编译类型是 Person ,运行类型是是根据实际情况有 JVM 来判断
+            System.out.println(persons[i].say());// 动态绑定机制
+            //使用类型判断 + 向下转型.
+            if (persons[i] instanceof Student) {
+                ((Student) persons[i]).study();
+
+            } else if (persons[i] instanceof Teacher) {
+                ((Teacher) persons[i]).teach();
+
+            } else {
+                System.out.println("类型有误");
+            }
+         }
+     }
+}
+package com.kamadaken.pkg.poly_.polyarr_;
+
+public class Perosn {
+    private String name;
+    private int age;
+
+    public Perosn(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String say() {
+        return name + "\t" + age;
+    }
+}
+package com.kamadaken.pkg.poly_.polyarr_;
+
+public class Teacher extends Perosn {
+    private double salary;
+
+    public Teacher(String name, int age, double salary) {
+        super(name, age);
+        this.salary = salary;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    //重写父类say方法
+    public String say(){
+        return super.say() + "salary=" + salary;
+    }
+    //特有方法
+    public void teach(){
+        System.out.println("老师" + getName() + "正在授课");
+    }
+}
+package com.kamadaken.pkg.poly_.polyarr_;
+
+import com.kamadaken.pkg.super_.A;
+
+public class Student extends Perosn{
+    private double score;
+
+    public Student(String name, int age, double score) {
+        super(name, age);
+        this.score = score;
+    }
+
+    public double getScore() {
+        return score;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
+
+    //重写父类的say方法
+    public String say(){
+        return  super.say() +"score="+ score;
+    }
+    //特有方法
+    public void study(){
+        System.out.println("学生" + getName() + "正在上课");
+    }
+}
+```
+
+#####多态参数
+
+```java
+package com.kamadaken.pkg.poly_.polyparameter;
+
+public class PloyParameter {
+    public static void main(String[] args) {
+        Worker tom = new Worker("tom", 45000);
+        Manager min = new Manager("min", 999999, 99999);
+        PloyParameter ployParameter = new PloyParameter();
+        ployParameter.showEmpAnnual(min);
+
+        ployParameter.testWork(tom);
+
+
+
+    }
+    //实现获取任何员工对象的年工资,并在 main 方法中调用该方法 [e.getAnnual()]
+    public void showEmpAnnual(Employee e){
+        System.out.println(e.getAnnual());
+    }
+    //添加一个方法，testWork,如果是普通员工，则调用 work 方法，
+    // 如果是经理，则调用 manage 方法
+    public void testWork(Employee e){
+        if(e instanceof Worker){
+            ((Worker) e).work();
+
+        } else if (e instanceof Manager) {
+            ((Manager) e).manage();
+        }else{
+            System.out.println("null");
+        }
+    }
+}
+
+package com.kamadaken.pkg.poly_.polyparameter;
+
+public class Employee {
+    private String name;
+    private double salary;
+
+    public Employee(String name, double salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    //得到年工资的方法
+    public double getAnnual(){
+        return 12 * salary;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+
+}
+package com.kamadaken.pkg.poly_.polyparameter;
+
+public class Manager extends  Employee{
+    private double bonus;
+
+    public Manager(String name, double salary, double bonus) {
+        super(name, salary);
+        this.bonus = bonus;
+    }
+
+    public double getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(double bonus) {
+        this.bonus = bonus;
+    }
+
+    public void manage(){
+        System.out.println("manager" + getName() + "is managing");
+    }
+    //重写获取年金的方法
+
+    @Override
+    public double getAnnual() {
+        return super.getAnnual() + bonus;
+    }
+}
+package com.kamadaken.pkg.poly_.polyparameter;
+
+public class Worker extends Employee {
+    public Worker(String name, double salary) {
+        super(name, salary);
+    }
+
+    public void work() {
+        System.out.println("staff " + getName() + " is working");
+    }
+
+    public double getAnnual(){
+        return super.getAnnual();
+    }
+}
+```
+
+#### Object类详解
+
+##### equals方法
+
+== 与equals 的对比
+
+==是一个比较运算符
+
+1.==：既可以判断基本类型，又可以判断引用类型
+
+2.==：如果判断基本类型，判断的是值是否相等
+
+3.==：如果判断的是引用类型，判断的是地址是否相等，即指向的是否是同一个对象
+
+4.equals：是Object类中的方法，只能判断引用类型
+
+5.默认判断的是地址是否相等，子类中往往重写该方法，用于判断内容是否相等。
+
+```java
+package com.kamadaken.pkg.poly_.object_;
+
+public class Equals01 {
+    public static void main(String[] args) {
+        A a = new A();
+
+        "hello".equals("abc");
+        //equals方法的源码
+        /*
+        //
+        public boolean equals(Object anObject) {
+        if (this == anObject) {//如果是同一个对象
+            return true;
+        }
+        if (anObject instanceof String) {//判断类型是否相等
+            String anotherString = (String)anObject;//向下转型
+            int n = value.length;
+            if (n == anotherString.value.length) {
+                char v1[] = value;
+                char v2[] = anotherString.value;
+                int i = 0;
+                while (n-- != 0) {//一个个比较字符
+                    if (v1[i] != v2[i])
+                        return false;
+                    i++;
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+         */
+
+        /*Object 的 equals 方法默认就是对象的地址是否相同
+        public boolean equals(Object obj) {
+        return (this == obj);
+    }
+
+         */
+
+        Integer integer = new Integer(5);
+
+        /*
+        public boolean equals(Object obj) {
+        if (obj instanceof Integer) {
+            return value == ((Integer)obj).intValue();
+        }
+        return false;
+    }
+         */
+   }
+}
+class A{
+
+}
+
+```
+
+练习
+
+```java
+package com.kamadaken.pkg.poly_.object_;
+
+public class EqualsExercise01 {
+    public static void main(String[] args) {
+        Person person1 = new Person("min", 24, 'M');
+        Person person2 = new Person("min", 24, 'M');
+        System.out.println(person1.equals(person2));
+    }
+}
+class Person{
+    private String name;
+    private int age;
+    private char gender;
+
+    public boolean equals(Object obj){
+        if(this == obj){
+            return true;
+        }
+        if(obj instanceof Person){
+            Person p =(Person) obj;
+            return this.name.equals(p.name)&&this.age == p.age&&this.gender== p.gender;
+        }
+        return false;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public char getGender() {
+        return gender;
+    }
+
+    public void setGender(char gender) {
+        this.gender = gender;
+    }
+
+    public Person(String name, int age, char gender) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
+}
+
+```
+
+#####hashCode方法
+
+1) 提高具有哈希结构的容器的效率!
+2) 两个引用，如果指向的是同一个对象，则哈希值肯定是一样的!
+3) 两个引用，如果指向的是不同对象，则哈希值是不一样的
+4) 哈希值主要根据地址号来的!，不能完全将哈希值等价于地址。
+
+##### toString方法
+
+基本介绍
+
+1. 默认返回:全类名+@+哈希值的十六进制，【查看 Object 的 toString 方法】 子类往往重写 toString 方法，用于返回对象的属性信息
+
+2. 重写toString方法，打印对象或拼接对象时，都会自动调用该对象的toString形式.
+
+3. 当直接输出一个对象时，toString 方法会被默认的调用, 比如 System.out.println(monster); 就会默认调用
+
+    monster.toString()
+
+```java 
+package com.kamadaken.pkg.poly_.object_;
+
+public class ToString_ {
+    public static void main(String[] args) {
+        /* toString方法的源码
+        public String toString() {
+        return getClass().getName() + "@" + Integer.toHexString(hashCode());
+    }
+         */
+        Monster monster = new Monster("小妖怪", "巡山", 280000);
+        System.out.println(monster.toString());
+
+
+        System.out.println(monster);//输出对象会默认调用toString
+    }
+
+}
+class Monster{
+    private String name;
+    private String job;
+    private double sal;
+
+    public Monster(String name, String job, double sal) {
+        this.name = name;
+        this.job = job;
+        this.sal = sal;
+    }
+    //重写toString方法，输出对象属性
+//    快捷键
+
+
+    @Override
+    public String toString() {//默认重写后输出对象的属性
+        return "Monster{" +
+                "name='" + name + '\'' +
+                ", job='" + job + '\'' +
+                ", sal=" + sal +
+                '}';
+    }
+}
+
+```
+
+##### finalize 方法
+
+1. 当对象被回收时，系统自动调用该对象的finalize方法。子类可以重写该方法，做一些释放资源的操作【演示】
+
+2.  什么时候被回收:当某个对象没有任何引用时，则jvm就认为这个对象是一个垃圾对象，就会使用垃圾回收机制来 销毁该对象，在销毁该对象前，会先调用 finalize 方法。
+
+3. 垃圾回收机制的调用，是由系统来决定(即有自己的GC算法),也可以通过System.gc()主动触发垃圾回收机制，测试:Car [name]
+
+    
+
+```java
+package com.kamadaken.pkg.poly_.object_;
+
+public class Finalize_ {
+    public static void main(String[] args) {
+        Car bmw = new Car("BMW");
+        bmw = null;//car成为垃圾对象，垃圾回收机制(销毁)对象，
+        // 在销毁前会调用该对象的finalize方法
+        //这时，可以在finalize中写自己的业务逻辑（比如释放资源，或者打开的文件流）
+        System.gc();//主动调用垃圾回收器
+        System.out.println("程序退出");
+    }
+}
+class Car{
+    private String name;
+
+    public Car(String name){
+        this.name = name;
+    }
+    //重写
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("销毁汽车" + name);
+        System.out.println("释放资源");
+    }
+}
+
+```
+
+#### 断点调试
+
+1.断电调试是指在程序的某一行设置一个断点，调试时，程序运行到这一行时就会停住，然后就可以一步一步向下调试，调试过程中可以看各个变量当前的值，出错的话，调试到出错的代码行即显示错误停下，进而分析找到BUG。
+
+2.断点调试是程序员必须掌握的技能
+
+3.断点调试也能帮助查看底层源码的执行过程，提高编程水平
+
+```java
+package com.kamadaken.pkg.debug_;
+//debug对象创建过程，加深对调试对理解
+public class DebugExercise {
+    public static void main(String[] args) {
+        //创建对象流程
+        //1)加载Person类信息
+        //2)初始化 2。1默认初始化，2。2显示初始化，2。3构造器初始化
+        //3）返回对象地址
+        Person jack = new Person("jack", 24);
+        System.out.println(jack);
+    }
+}
+class Person{
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+}
+```
+
+1.使用断点调试的方法，追踪下一个对象 的创建过程。
+
+2.查看动态绑定机制如何工作
+
+![截屏2022-10-27 18.04.12](assets/%E6%88%AA%E5%B1%8F2022-10-27%2018.04.12.png)
+
+#### 项目零钱通
+
+开发 零钱通项目 , 可以完成收益入账，消费，查看明细，退出系统等功能.
+
+```java
+package com.kamadaken.pkg.smallchange.oop;
+
+public class SmallChangeSysApp {
+    public static void main(String[] args) {
+        
+        new SmallChangeSysoop().mainMenu();
+    }
+}
+
+package com.kamadaken.pkg.smallchange.oop;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
+
+/**
+ * 该类是完成零钱通各个功能的分类
+ * 使用oop
+ * 各个功能对象一个方法
+ */
+public class SmallChangeSysoop {
+    //属性
+
+    //1.定义相关变量
+    boolean loop = true;
+    Scanner scanner = new Scanner(System.in);
+    String key = "";
+
+    //2。1）收益入账和消费2）使用对象 3）String拼接
+
+    String details = "------零钱通明细-------";
+
+    //3.
+    //定义新的变量
+    //功能驱动代码
+    double money = 0;
+    double balance = 0;
+    Date date = null;//引入java.util
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    //4。定义新变量保存消费的原因
+    String note = "";
+    public  void mainMenu() {
+        do {
+            System.out.println("\n=======选择零钱通菜单=======");
+            System.out.println("\t\t\t1 零钱通明细");
+            System.out.println("\t\t\t2 收益入账");
+            System.out.println("\t\t\t3 消费");
+            System.out.println("\t\t\t4 退出");
+
+            System.out.print("请选择1-4");
+            key = scanner.next();
+
+            //使用switch分支控制
+            switch (key) {
+                case "1":
+                   this.detail();
+                    break;
+                case "2":
+                    this.income();
+                    break;
+                case "3":
+                    this.pay();
+                    break;
+                case "4":
+                   this.exit();
+                    break;
+
+                default:
+                    System.out.println("选择有误请重新选择");
+
+
+            }
+
+
+        } while (loop);
+    }
+
+    //完成零钱通明细
+    public void detail(){
+        System.out.println(details);
+
+    }
+    //收益入账
+    public void income(){
+        System.out.println("收益入账金额：");
+        money = scanner.nextDouble();
+        //money的值范围校验
+        if (money <= 0){
+            System.out.println("收益范围需要大于0");
+            return;//退出方法
+        }
+        balance += money;
+        //拼接收益入账信息到details
+        date = new Date();//获取当前日前
+
+        details += "\n收益入账\t+" + money + "\t" + sdf.format(date) + "\t" + balance;
+
+    }
+    public void pay(){
+        System.out.println("消费金额");
+        money = scanner.nextDouble();
+        if (money <= 0||money >balance){
+            System.out.println("消费金额0" + balance);
+            return;
+        }
+        System.out.println("消费说明：");
+        note = scanner.next();
+        balance -= money;
+        //接收信息
+        details += "\n" + note + "\t" + money + "\t" + sdf.format(date) + "\t" + balance;
+
+    }
+    public void exit(){
+        String choice = "";
+        while (true) {
+            System.out.println("你确定退出？ y/n");
+            choice = scanner.next();
+            if ("y".equals(choice) || "n".equals(choice)) {
+                break;
+
+            }
+        }
+        if (choice.equals("y")) {
+            loop = false;
+        }
+
+     }
+}
+```
+
+####练习
+
+```java
+package com.kamadaken.pkg.homework;
+
+import javax.imageio.plugins.jpeg.JPEGImageReadParam;
+
+public class Homework01 {
+    public static void main(String[] args) {
+        Person[] people = new Person[5];
+        people[0] = new Person("kameda", 62, "java工程师");
+        people[1] = new Person("MINWEN", 24, "HCI工程师");
+        people[2] = new Person("OK", 99, "java工程师");
+        people[3] = new Person("kaunkyoku", 27, "SAP工程师");
+        people[4] = new Person("Wei", 32, "アルゴリズム工程师");
+        System.out.println("排序前输出");
+        for (int i = 0; i < people.length; i++) {
+            System.out.println(people[i]);
+
+        }
+        Person tmp = null;
+        for (int i = 0; i < people.length-1; i++) {
+            for (int j = 0; j < people.length - 1 - i; j++) {
+                if (people[j].getAge() > people[j+1].getAge()){
+                    tmp = people[j];
+                    people[j] =people[j+1];
+                    people[j+1] =tmp;
+                }
+            }
+
+        }
+        System.out.println("排序后");
+        for (int i = 0; i < people.length; i++) {
+            System.out.println(people[i]);
+
+        }
+    }
+    /*
+     定义一个Person类按age从小到大排序
+    */
+
+
+}
+class Person{
+    private String name;
+    private int age;
+    private String Job;
+
+    public Person(String name, int age, String job) {
+        this.name = name;
+        this.age = age;
+        Job = job;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getJob() {
+        return Job;
+    }
+
+    public void setJob(String job) {
+        Job = job;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", Job='" + Job + '\'' +
+                '}';
+    }
+}
+
+```
+
+```java
+package com.kamadaken.pkg.homework;
+
+public class Homework03 {
+    public static void main(String[] args) {
+        Professor professor = new Professor("min", 24, "professor", 30000, 1.3);
+        professor.introduce();
+    }
+}
+package com.kamadaken.pkg.homework;
+/*
+(1)要求有属性 姓名 年龄 职称 基本工资
+(2)编写业务方法，introduce(),实现输出一个教师信息
+ */
+public class Teacher {
+    private String name;
+    private int age;
+    private String post;
+    private double salary;
+    private double level;
+
+    public Teacher(String name, int age, String post, double salary, double level) {
+        this.name = name;
+        this.age = age;
+        this.post = post;
+        this.salary = salary;
+        this.level = level;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getPost() {
+        return post;
+    }
+
+    public void setPost(String post) {
+        this.post = post;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public double getLevel() {
+        return level;
+    }
+
+    public void setLevel(double level) {
+        this.level = level;
+    }
+    public void introduce(){
+        System.out.println("name: " + name + "age: " + age +
+                "post: " + post +"salary: "
+        +salary + "level: " + level);
+    }
+}
+package com.kamadaken.pkg.homework;
+
+public class Professor extends Teacher {
+    public Professor(String name, int age, String post, double salary, double level) {
+        super(name, age, post, salary, level);
+    }
+
+    @Override
+    public void introduce() {
+        System.out.println("教授的信息");
+        super.introduce();
+    }
+}
+```
+
+```java
+package com.kamadaken.pkg.homework;
+
+public class Homework04 {
+    public static void main(String[] args) {
+        Manager min = new Manager("min", 50000, 20, 1.2);
+        min.setBonus(900000);
+        min.printSal();
+
+        Worker Z = new Worker("zhaosiyu", 30000, 20, 1.0);
+        Z.printSal();
+
+    }
+}
+package com.kamadaken.pkg.homework;
+
+public class Employee {
+    //属性
+    private String name;
+    private  double daySal;
+    private int workDays;
+    private double level;
+
+
+    public Employee(String name, double daySal, int workDays, double level) {
+        this.name = name;
+        this.daySal = daySal;
+        this.workDays = workDays;
+        this.level = level;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getDaySal() {
+        return daySal;
+    }
+
+    public void setDaySal(double daySal) {
+        this.daySal = daySal;
+    }
+
+    public int getWorkDays() {
+        return workDays;
+    }
+
+    public void setWorkDays(int workDays) {
+        this.workDays = workDays;
+    }
+
+    public double getLevel() {
+        return level;
+    }
+
+    public void setLevel(double level) {
+        this.level = level;
+    }
+    public void printSal(){
+        System.out.println(name + "工资： " + daySal*workDays*level);
+    }
+
+}
+package com.kamadaken.pkg.homework;
+
+public class Manager extends Employee {
+    private double bonus;
+    //创建Manager对象时，不确定奖金
+
+    public Manager(String name, double daySal, int workDays, double level) {
+        super(name, daySal, workDays, level);
+    }
+
+    public double getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(double bonus) {
+        this.bonus = bonus;
+    }
+
+    @Override
+    public void printSal() {
+        System.out.println("manager: " + getName() + " " + "salary: " +
+                (bonus + getDaySal() * getWorkDays() * getLevel()));
+    }
+}
+package com.kamadaken.pkg.homework;
+
+public class Worker extends Employee{
+    public Worker(String name, double daySal, int workDays, double level) {
+        super(name, daySal, workDays, level);
+
+    }
+
+    @Override
+    public void printSal() {
+        super.printSal();
+    }
+}
+
+```
+
+```java
+package com.kamadaken.pkg.homework.Homework05;
+
+public class Homework05 {
+    public static void main(String[] args) {
+        Worker jack = new Worker("jack", 5000);
+        jack.setSalMonth(9);
+        jack.printSal();
+
+        Peasent smith = new Peasent("smith", 5000);
+        smith.printSal();
+        Teacher kameda = new Teacher("Kameda", 90000);
+        kameda.setClassDays(240);
+        kameda.setClassSal(9000);
+        kameda.printSal();
+
+        Scientist min = new Scientist("MIN", 900000);
+        min.setBonus(9000);
+        min.printSal();
+    }
+}
+package com.kamadaken.pkg.homework.Homework05;
+
+public class Employee {
+    private String name;
+    private  double sal;
+    private int salMonth = 12;
+
+    public Employee(String name, double sal) {
+        this.name = name;
+        this.sal = sal;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getSal() {
+        return sal;
+    }
+
+    public void setSal(double sal) {
+        this.sal = sal;
+    }
+
+    public int getSalMonth() {
+        return salMonth;
+    }
+
+    public void setSalMonth(int salMonth) {
+        this.salMonth = salMonth;
+    }
+    public void printSal(){
+        System.out.println(name + "年工资" + (sal*salMonth));
+    }
+}
+package com.kamadaken.pkg.homework.Homework05;
+
+public class Worker extends Employee{
+    public Worker(String name, double sal) {
+        super(name, sal);
+    }
+
+    @Override
+    public void printSal() {
+        System.out.println("工人");
+        super.printSal();
+    }
+}
+package com.kamadaken.pkg.homework.Homework05;
+
+public class Peasent extends Employee{
+    public Peasent(String name, double sal) {
+        super(name, sal);
+    }
+
+    @Override
+    public void printSal() {
+        super.printSal();
+    }
+}
+package com.kamadaken.pkg.homework.Homework05;
+
+public class Teacher extends Employee{
+    private int classDays;
+    private double classSal;
+
+    public Teacher(String name, double sal) {
+        super(name, sal);
+    }
+
+    public int getClassDays() {
+        return classDays;
+    }
+
+    public void setClassDays(int classDays) {
+        this.classDays = classDays;
+    }
+
+    public double getClassSal() {
+        return classSal;
+    }
+
+    public void setClassSal(double classSal) {
+        this.classSal = classSal;
+    }
+
+    @Override
+    public void printSal() {
+        System.out.println(getName() + "の年間給料"
+                +(getSal()*getSalMonth() + classSal* classDays) );
+    }
+}
+package com.kamadaken.pkg.homework.Homework05;
+
+public class Scientist extends Employee {
+    private double bonus;
+
+    public Scientist(String name, double sal) {
+        super(name, sal);
+    }
+
+    public double getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(double bonus) {
+        this.bonus = bonus;
+    }
+
+    @Override
+    public void printSal() {
+        System.out.println("科学家");
+        System.out.println(getName() + "年工资 "
+                + getSal() * getSalMonth() + bonus);
+    }
+}
+
+```
+
+super（父类对象）可以访问父类及以上，除了 private修饰、静态、覆盖的成员
+
+this(对象本身)可以访问自己的所有(非静态)成员，和父类及以上，除了private修饰、静态、覆盖的成员
+
+```java
+package com.kamadaken.pkg.homework;
+
+public class Homework07 {
+
+}
+    class Test {
+        String name = "Rose";
+
+        Test() {
+            System.out.println("Test");
+        }
+
+        Test(String name) {
+            this.name = name;
+        }
+    }
+
+class Demo extends Test{
+        String name = "jack";
+        Demo(){
+            super();
+            System.out.println("Demo");
+        }
+        Demo(String s){
+            super(s);
+        }
+        public void test(){
+            System.out.println(super.name);
+            System.out.println(this.name);
+        } 
+
+        public static void main(String[] args) {
+            new Demo().test();
+            new Demo("john").test();
+
+        }
+}
+
+```
+
+![截屏2022-10-26 21.16.43](assets/%E6%88%AA%E5%B1%8F2022-10-26%2021.16.43.png)
+
+```java
+package com.kamadaken.pkg.homework;
+
+import com.kamadaken.pkg.homework.Homework05.SavingAccount;
+
+public class HomeWork08 {
+    public static void main(String[] args) {
+//        CheckingAccount checkingAccount = new CheckingAccount(1000);
+//        checkingAccount.deposit(10);
+//        checkingAccount.withdraw(9);
+//        System.out.println(checkingAccount.getBalance());
+        SavingAccount savingAccount = new SavingAccount(1000);
+        savingAccount.deposit(100);
+        savingAccount.deposit(100);
+        savingAccount.deposit(100);
+        System.out.println(savingAccount.getBalance());
+        savingAccount.deposit(100);
+        System.out.println(savingAccount.getBalance());
+
+        savingAccount.earnMonthlyInterest();
+        System.out.println(savingAccount.getBalance());
+        savingAccount.withdraw(100);
+
+    }
+}
+package com.kamadaken.pkg.homework;
+
+public class BankAccount {
+    private double balance;
+    public BankAccount(double initialBalance){
+        this.balance = initialBalance;
+    }
+    //chunkan
+    public void deposit(double amount){
+        balance += amount;
+    }
+    public void withdraw(double amount){
+        balance -= amount;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+}
+package com.kamadaken.pkg.homework;
+
+public class CheckingAccount extends BankAccount{
+    public CheckingAccount(double initialBalance) {
+        super(initialBalance);
+    }
+
+    @Override
+    public void deposit(double amount) {
+        super.deposit(amount-1);
+    }
+
+    @Override
+    public void withdraw(double amount) {
+        super.withdraw(amount+1);
+    }
+}
+package com.kamadaken.pkg.homework.Homework05;
+
+import com.kamadaken.pkg.homework.BankAccount;
+
+public class SavingAccount extends BankAccount {
+    private int count = 3;
+    private double rate = 0.01;
+
+    public void earnMonthlyInterest() {//每月初，统计上个月信息 同时将count3
+        count = 3;
+        super.deposit(getBalance() * rate);
+
+    }
+
+    @Override
+    public void deposit(double amount) {
+        if (count > 0) {
+            super.deposit(amount);
+        } else {
+            super.deposit(amount - 1);
+        }
+        count--;
+    }
+
+    @Override
+    public void withdraw(double amount) {
+        if (count > 0) {
+            super.withdraw(amount);
+        } else {
+            super.withdraw(amount + 1);
+        }
+        count--;
+    }
+
+    public SavingAccount(double initialBalance) {
+        super(initialBalance);
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public double getRate() {
+        return rate;
+    }
+
+    public void setRate(double rate) {
+        this.rate = rate;
+    }
+}
+```
+
+![截屏2022-10-26 21.33.46](assets/%E6%88%AA%E5%B1%8F2022-10-26%2021.33.46.png)
+
+```java
+package com.kamadaken.pkg.homework;
+
+public class Homework10 {
+    public static void main(String[] args) {
+        Doctor doctor1 = new Doctor("本田真一", 60, "システムエンジニア", 'M', 80000);
+        Doctor doctor2 = new Doctor("本田真一", 60, "システムエンジニア", 'M', 80000);
+
+        System.out.println(doctor1.equals(doctor2));
+
+    }
+}
+package com.kamadaken.pkg.homework;
+
+import com.sun.org.apache.xpath.internal.objects.XObject;
+
+public class Doctor {
+    private String name;
+    private int age;
+    private String job;
+    private char gender;
+    private double sal;
+
+    public Doctor(String name, int age, String job, char gender, double sal) {
+        this.name = name;
+        this.age = age;
+        this.job = job;
+        this.gender = gender;
+        this.sal = sal;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
+    }
+
+    public char getGender() {
+        return gender;
+    }
+
+    public void setGender(char gender) {
+        this.gender = gender;
+    }
+
+    public double getSal() {
+        return sal;
+    }
+
+    public void setSal(double sal) {
+        this.sal = sal;
+    }
+    public boolean equals(Object obj){
+        if(this == obj){
+            return true;
+
+        }
+
+        if(!(obj instanceof Doctor)){
+            return false;
+        }
+        //向下转型，因为obj运行类型是Doctor或其子类
+        Doctor doctor = (Doctor) obj;
+        return this.name.equals(doctor.name) && this.age ==doctor.age&&
+                this.gender==doctor.gender&& this.job.equals(doctor.job)
+                &&this.sal==doctor.sal;
+    }
+}
+```
+
+![截屏2022-10-27 14.22.48](assets/%E6%88%AA%E5%B1%8F2022-10-27%2014.22.48.png)
+
+```java
+//向上转型：父类引用指向子类对象
+Person p = new Student();
+p.run();
+p.eat();
+//向下转型：把指向子类对象的父类引用，转成指向子类对象的子类引用
+Student s = (Student)p;
+s.run();
+s.eat();
+s.study();
+```
+
+![截屏2022-10-27 16.21.00](assets/%E6%88%AA%E5%B1%8F2022-10-27%2016.21.00.png)
+
+```java
+package com.kamadaken.pkg.homework.homework13;
+
+public class Homework13 {
+    public static void main(String[] args) {
+        Student student = new Student("みんさん", 'M', 24, "G2121039");
+        student.printInfo();
+        System.out.println("----------------");
+        Teacher teacher = new Teacher("亀田", 'm', 63, 36);
+        teacher.printInfo();
+
+        //定义多态数组，保存两个学生两个老师，要求年龄从高到低排序
+
+        Person[] people = new Person[4];
+        people[0]= new Student("jack", 'm',24,"g2121039");
+        people[1]= new Student("jack2", 'm',29,"g2121039");
+        people[2]= new Teacher("kanada", 'm',56,30);
+        people[3]= new Teacher("hosono", 'm',62,34);
+
+        //创建对象
+        Homework13 homework13 = new Homework13();
+        homework13.bubbleSort(people);
+
+        //输出
+        System.out.println("输出排序后");
+        for (int i = 0; i < people.length; i++) {
+            System.out.println(people[i].toString());
+        }
+        System.out.println("---------");
+        for (int i = 0; i < people.length; i++) {
+            homework13.test(people[i]);
+        }
+
+
+
+    }
+    //定义方法，形参为person类型，功能：调用学生的study或教师的teach方法
+    //向下转型和类型判断
+    public void test(Person p){
+        if(p instanceof Student){
+            ((Student) p).study();
+        } else if (p instanceof Teacher) {
+            ((Teacher) p).teach();
+
+        }else {
+            System.out.println("入力エラー");
+        }
+    }
+    //排序
+    public void bubbleSort(Person[] people){
+        Person tmp = null;
+        for (int i = 0; i < people.length-1; i++) {
+            for (int j = 0; j <people.length-1-i; j++) {
+                if (people[j].getAge()<people[j+1].getAge()){
+                    tmp = people[j];
+                    people[j]= people[j+1];
+                    people[j+1] = tmp;
+                }
+
+            }
+        }
+    }
+
+}
+package com.kamadaken.pkg.homework.homework13;
+
+public class Person {
+    private String name;
+    private char gender;
+    private int age;
+
+    public Person(String name, char gender, int age) {
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public char getGender() {
+        return gender;
+    }
+
+    public void setGender(char gender) {
+        this.gender = gender;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    //编写play方法
+    public String play() {
+        return name + "遊ぼう";
+    }
+
+    //    返回信息的方法
+    public String basicInfo() {
+        return "姓名： " + name + "\n年龄：" + age + "\n性别" + gender;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", gender=" + gender +
+                ", age=" + age +
+                '}';
+    }
+}
+package com.kamadaken.pkg.homework.homework13;
+
+public class Teacher extends Person{
+    private String name;
+    private char gender;
+    private int age;
+    private int work_age;
+
+    public Teacher(String name, char gender, int age, int work_age) {
+        super(name, gender, age);
+        this.work_age = work_age;
+    }
+
+
+
+    public int getWork_age() {
+        return work_age;
+    }
+
+    public void setWork_age(int work_age) {
+        this.work_age = work_age;
+    }
+    public void teach(){
+        System.out.println("ちゃんと教えて");
+    }
+
+    @Override
+    public String play() {
+        return super.play() + "治癒系知能ローボト";
+    }
+    public void printInfo(){
+        System.out.println("老师信息：\n");
+        System.out.println(super.basicInfo());
+        System.out.println("働く年間："+ getWork_age());
+        this.teach();
+        System.out.println(play());
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "work_age=" + work_age +
+                '}' + super.toString();
+    }
+}
+package com.kamadaken.pkg.homework.homework13;
+
+public class Student extends Person {
+    private String name;
+    private char gender;
+    private int age;
+    private String stu_id;
+
+    //方法
+
+    public Student(String name, char gender, int age, String stu_id) {
+        super(name, gender, age);
+        this.stu_id = stu_id;
+    }
+
+
+    public String getStu_id() {
+        return stu_id;
+    }
+
+    public void setStu_id(String stu_id) {
+        this.stu_id = stu_id;
+    }
+    public void study(){
+        System.out.println("JAVAの勉強課程を大好き");
+    }
+
+    @Override
+    public String play() {
+        return super.play() + "サーカー";
+    }
+    public void printInfo(){
+        System.out.println("学生信息：\n");
+        System.out.println(super.basicInfo());
+        System.out.println("学号" + stu_id);
+        this.study();
+        System.out.println(play());
+
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "stu_id='" + stu_id + '\'' +
+                '}'+super.toString();
+    }
+}
+```
+
+在使用[构造方法](https://so.csdn.net/so/search?q=构造方法&spm=1001.2101.3001.7020)来完成对象的初始化的时候，子类对象的实例会默认的调用父类的构造方法.即使我们的super关键字是没有写的.
+
+```java
+/*
+多态：方法或对象具有多种状态，是oop的第三大特征，是建立在封装和继承 的基础上的
+1.方法多态
+1）重载体现多态2）重写体现多态
+2.对象多态
+1）对象 的编译类型和运行类型可以不一致，编译类型在定义时就确定不能变化
+2）对象 的运行类型是可以变化的，可以通过 getClass() 来查看运行类型
+3）编译类型看=号左边 运行类型看=号右边
+
+16.java的动态绑定机制
+1.当调用对象方法时，该方法会和对象的运行类型绑定
+2.当调用属性时，哪里声明哪里使用
+*/
+```
+
+### 小项目：实现房屋出租系统
+
+![截屏2022-10-27 20.17.49](assets/%E6%88%AA%E5%B1%8F2022-10-27%2020.17.49.png)
+
+实现功能的三部曲 [明确完成功能->思路分析->代码实现]
+
+```java
+package com.kamedaken.houserent;
+
+import com.kamedaken.houserent.domain.House;
+import com.kamedaken.houserent.view.HouseView;
+
+public class HouseRentApp {
+    public static void main(String[] args) {
+        //创建HouseView对象，并显示主菜单，整个程序的入口
+        new HouseView().mainMenu();
+        System.out.println("==退出系统==");
+
+    }
+}
+
+package com.kamedaken.houserent.view;
+
+import com.kamedaken.houserent.HouseRentApp;
+import com.kamedaken.houserent.domain.House;
+import com.kamedaken.houserent.service.HouseService;
+import com.kamedaken.houserent.utils.Utility;
+import com.sun.imageio.plugins.wbmp.WBMPImageReader;
+
+/**
+ * 1.显示界面
+ * 2.接收用户输入
+ * 3.调用HouseService完成对房屋信息对各种操作
+ */
+public class HouseView {
+    private boolean loop = true;//控制显示菜单
+    private char key = ' ';//接收用户输入
+    private HouseService houseService = new HouseService(2);//设置数组的大小为10
+
+    //根据ID修改房屋信息
+    public void update() {
+        System.out.println("=======修改房屋信息========");
+        System.out.println("请选择待修改的房屋编号");
+        int updateId = Utility.readInt();
+        if (updateId == -1) {
+            System.out.println("=======放弃修改========");
+            return;
+        }
+
+        //根据输入查找对象
+        House house = houseService.findById(updateId);
+        if (house == null) {
+            System.out.println("==========修改信息不存在=========");
+            return;
+        }
+        System.out.print("名前（" + house.getName() + "):");
+        String name = Utility.readString(8, "");
+        if (!"".equals(name)) {
+            house.setName(name);
+        }
+        System.out.print("电话（" + house.getPhone() + "):");
+        String phone = Utility.readString(12, "");
+        if (!"".equals(phone)) {
+            house.setPhone(phone);
+        }
+        System.out.print("地址（" + house.getAddress() + "):");
+        String address = Utility.readString(18, "");
+        if (!"".equals(address)) {
+            house.setAddress(address);
+        }
+        System.out.print("租金（" + house.getPhone() + "):");
+        int rent = Utility.readInt(-1);
+        if (!"".equals(rent)) {
+            house.setRent(rent);
+        }
+        System.out.print("状态（" + house.getState() + "):");
+        String state = Utility.readString(4, "");
+        if (!"".equals(state)) {
+            house.setState(state);
+        }
+    }
+
+
+    //findHouse()接收输入id
+    public void findHouse() {
+        System.out.println("======查找房屋信息=========");
+        System.out.print("请输入要查找的ID：");
+        int findId = Utility.readInt();
+        //调用方法
+        House house = houseService.findById(findId);
+        if (house != null) {
+            System.out.println(house);
+        } else {
+            System.out.println("=======查找的信息不存在=========");
+        }
+    }
+
+
+    //完成退出确认
+    public void exit() {
+        char c = Utility.readConfirmSelection();
+        if (c == 'Y') {
+            loop = false;
+        }
+    }
+
+
+    //编写delHouse()接收用户输入
+    public void delHouse() {
+        System.out.println("======删除房屋信息======");
+        System.out.println("请输入待删除房屋的编号(-1退出):");
+        int delId = Utility.readInt();
+        if (delId == -1) {
+            System.out.println("========放弃删除======");
+            return;
+        } else {
+            char choice = Utility.readConfirmSelection();
+            if (choice == 'Y') {
+                if (houseService.del(delId)) {
+                    System.out.println("=====删除房屋信息成功========");
+                } else {
+                    System.out.println("========房屋编号不存在=======");
+                }
+
+            } else {
+                System.out.println("========放弃删除======");
+            }
+        }
+    }
+
+
+    //编写addHouse（） 接收输入，创建House对象 调用add方法
+    public void addHouse() {
+        System.out.println("=======添加房屋========");
+        System.out.println("姓名");
+        String name = Utility.readString(8);
+        System.out.println("电话：");
+        String phone = Utility.readString(12);
+        System.out.println("地址");
+        String address = Utility.readString(16);
+        System.out.println("月租：");
+        int rent = Utility.readInt();
+        System.out.println("状态：");
+        String sate = Utility.readString(3);
+        //创建一个新的House对象，注意id是系统分配
+        House house = new House(0, name, phone, address, rent, sate);
+        if (houseService.add(house)) {
+            System.out.println("=======添加成功========");
+        } else {
+            System.out.println("========运行失败=======");
+        }
+
+
+    }
+
+
+    //编写listHouse()显示房屋列表
+    public void listHouses() {
+        System.out.println("======房屋列表========");
+        System.out.println("编号\t\t房主\t\t电话\t\t地址\t\t月租\t\t状态");
+        House[] houses = houseService.list();
+        for (int i = 0; i < houses.length; i++) {
+            if (houses[i] == null) {
+                break;
+
+            }
+            System.out.println(houses[i]);
+        }
+        System.out.println("=====房屋列表显示完毕=======");
+    }
+
+    //显示主菜
+    public void mainMenu() {
+        do {
+            System.out.println("\n========房屋出租系统========");
+            System.out.println("\t\t\t1 新 增 房 源");
+            System.out.println("\t\t\t2 查 找 房 源");
+            System.out.println("\t\t\t3 删 除 房 屋 信 息");
+            System.out.println("\t\t\t4 修 改 房 屋 信 息");
+            System.out.println("\t\t\t5 房 屋 列 表");
+            System.out.println("\t\t\t6 退    出");
+            System.out.println("请输入你的选择（1-6）");
+            key = Utility.readChar();
+            switch (key) {
+                case '1':
+                    addHouse();
+                    break;
+                case '2':
+                    findHouse();
+                    break;
+                case '3':
+                    delHouse();
+                    break;
+                case '4':
+                    update();
+                    break;
+                case '5':
+                    listHouses();
+                    break;
+                case '6':
+                    //使用工具类提供的方法
+                    exit();
+                    break;
+            }
+        } while (loop);
+    }
+}
+package com.kamedaken.houserent.service;
+
+import com.kamedaken.houserent.domain.House;
+import com.kamedaken.houserent.utils.Utility;
+
+/**
+ * HouseService.java 类【业务层】
+ * //定义House[],保存House对象
+ * 1。响应HouseView对调用
+ * 2。完成对房屋信息对各种操作
+ */
+public class HouseService {
+    private House[] houses;
+    private int houseNums = 1;
+    private int idCounter = 1;
+
+    public HouseService(int size) {//构造器
+        houses = new House[size];//创建HouseService，制定数组大小
+        houses[0] = new House(1, "jack", "112", "片倉町", 31000, "まだ");
+
+    }
+
+
+    //find方法，返回House对象或null
+    public House findById(int findId){
+        for (int i = 0; i < houseNums; i++) {
+            if(findId == houses[i].getId()){
+                return houses[i];
+
+            }
+        }
+        return null;
+    }
+
+    //del方法，删除房屋信息
+    public boolean del(int delId){
+        int index = -1;
+        for (int i = 0; i < houseNums; i++) {
+            if(delId == houses[i].getId()){//要删除的房屋id，是数组下标为i的元素
+                index = i;
+
+            }
+        }
+        if(index == -1){//说明不存在
+            return false;
+
+        }
+        //
+        for (int i = index; i < houseNums-1; i++) {
+            houses[i] = houses[i+1];
+
+        }
+        //把当前存在的房屋信息最后一个null
+        houses[--houseNums] = null;
+        return true;
+    }
+
+
+    //add方法添加新对象，返回boolean
+    public boolean add(House newHouse) {
+        //判断是否还能添加
+        if (houseNums == houses.length) {//数组溢出
+            System.out.println("数组已满");
+            return false;
+
+        }
+        houses[houseNums++] = newHouse;
+        //设计Id自增长机制
+        newHouse.setId(++idCounter);
+        return true;
+
+    }
+
+    public House[] list() {
+        return houses;
+
+    }
+
+
+}
+package com.kamedaken.houserent.domain;
+
+/**
+ * House的对象表示房屋信息
+ */
+public class House {
+    private int id;
+    private String name;
+    private String phone;
+    private String address;
+    private int rent;
+    private String state;
+
+    public House(int id, String name, String phone, String address, int rent, String state) {
+        this.id = id;
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+        this.rent = rent;
+        this.state = state;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getRent() {
+        return rent;
+    }
+
+    public void setRent(int rent) {
+        this.rent = rent;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+    //方便输出
+
+    @Override
+    public String toString() {
+        return id +
+                "\t\t" + name +
+                "\t" +
+                "\t" + phone +
+                "\t\t" + address +
+                "\t" + rent +
+                "\t" + state;
+    }
+}
+```
+
+# OOP高级
+
+
+
+##类变量
+
+类变量也叫静态变量/静态属性，是该类的所有对象共享的变量，任何一个该类的对象访问它时，取到的都是相同的值，同样任何一个该类的对象去修改它时，修改的也是同一个变量。
+
+### 类变量语法
+
+```java
+访问修饰符 staic 数据类型 变量名；
+ static 访问修饰符 数据类型变量名
+```
+
+### 访问类变量
+
+```java
+类名.类变量名
+或
+对象名.类变量
+```
+
+### 类变量细节
+
+1.当需要让某个类的所有对象共享一个变量时，就可以考虑使用类变量：定义学生类
+
+统计学生应该交多少学费
+
+2.类变量与普通属性的区别
+
+类变量是该类所有对象共享的，属性是每个对象独享的
+
+3.加static称为类变量或静态变量，否则称为实例变量
+
+4.类变量可以通过类名.类变量名访问
+
+5.实例变量不能通过类名.类变量名 方式访问
+
+6.类变量在类加载时就初始化了，即使不创建对象也可以使用
+
+7.类变量的生命周期是随着类的加载开始，随着类消亡而销毁
+
+## 类方法
+
+```java
+package com.Kameda.static_;
+
+public class StaticMethod {
+    public static void main(String[] args) {
+        Stu min = new Stu("MIN");
+        min.payFee(100);
+
+        Stu ka = new Stu("Ka");
+        ka.payFee(200);
+
+        Stu.shoeFee();
+
+        //如果希望不创建实例，也可以直接调用某个方法
+        //这时适合调用静态方法
+        System.out.println(Math.sqrt(9));
+
+        System.out.println(Cal.calSum(1,2));
+        //不能用是因为类变量和类方法随着类的加载而加载，
+        // 类的加载比对象的创建要找，如果使用this或super的话，会找不到这个对象
+    }
+}
+class Cal{
+    public static double calSum(double n1,double n2){
+        return n1+n2;
+
+    }
+}
+class Stu{
+    private String name;
+    private static double  fee=0;
+
+    public Stu(String name) {
+        this.name = name;
+    }
+    //
+    //1.当方法使用static修饰后，方法就是静态方法
+    //2。静态方法就可以访问静态变量
+    public static void payFee(double fee){
+        Stu.fee += fee;//累积
+    }
+    public static void shoeFee(){
+        System.out.println(Stu.fee);
+    }
+}
+
+```
+
+### 类方法细节
+
+1.类方法和普通方法都是随着类的加载而加载，将信息存储在方法区
+
+类方法中无this的参数
+
+普通方法中隐含着this的参数
+
+2.类方法可以通过类名调用，也可以通过对象名调用
+
+3.普通方法通过对象名调用
+
+4.类方法中不允许使用对象有关的关键字，this，super等
+
+5.类方法只能访问静态变量或静态方法
+
+6.普通成员方法，都能访问。
+
+## main方法
+
+```java
+package com.Kameda.static_.main_;
+
+public class Main01 {
+    private int n1 = 100;
+    private static String name = "Kameda";
+    public static void hi(){
+        System.out.println("hi方法");
+    }
+    public static void main(String[] args) {
+        System.out.println(name);
+        hi();
+        //静态方法main要访问本类的非静态成员，需要先创建对象，再调用即可
+        Main01 main01 = new Main01();
+        System.out.println(main01.n1);
+    }
+}
+/*
+1)在main()方法中，我们可以直接调用main方法所在类的静态方法或静态属性。
+2) 但是，不能直接访问该类中的非静态成员，必须创建该类的一个实例对象后，才能通过这个对象去访问类中的非静态成员
+*/
+```
+
+## 代码块
+
+```java
+package com.Kameda.static_.codeblock;
+
+public class CodeBlock01 {
+    public static void main(String[] args) {
+        Movie movie = new Movie("nihao", 30, "jialing");
+        //代码块的调用优先于构造器
+    }
+}
+class Movie{
+    private String name;
+    private double price;
+    private String director;
+    {
+        System.out.println("你好");
+        System.out.println("广告");
+        System.out.println("电影要开始了——");
+    }
+
+    public Movie(String name) {
+        this.name = name;
+        System.out.println("第一个构造器被调用");
+    }
+
+    public Movie(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public Movie(String name, double price, String director) {
+        this.name = name;
+        this.price = price;
+        this.director = director;
+        System.out.println("第三个被调用");
+    }
+}
+```
+
+### 代码块注意事项
+
+1）static代码块静态代码块，作用就是对类进行初始化，随着类加载而执行，并且只执行一次，普通代码块，每创建一个对象就执行
+
+```java
+package com.Kameda.static_.codeblock;
+/*
+类被加载的情况举例
+创建子类对象实例时，父类也会被加载，先加载父类
+ */
+public class CodeBlockDetail01 {
+    public static void main(String[] args) {
+        AA aa = new AA();
+        System.out.println(Cat.n1);//使用类的静态成员时,加载类
+        new DD();
+    }
+}
+class Animal{
+    static {
+        System.out.println("Animal执行");
+    }
+}
+class Cat extends Animal{
+    public static int n1 = 999;
+    static {
+        System.out.println("cat静态代码块被执行");
+    }
+}
+class BB{
+    static {
+        System.out.println("BB被执行");
+    }
+}
+class AA extends BB{
+    //静态代码块
+    static {
+        System.out.println("AA被执行");
+    }
+}
+class DD{
+    //普通代码块在new对象时被调用，创建一次，就调用一次
+    //普通代码块是构造器的补充
+    {
+        System.out.println("DD被执行");
+    }
+}
+```
+
+2）类什么时候加载
+
+创建对象实例时（new）
+
+创建子类对象实例时，父类也会被加载
+
+使用类的静态成员时（静态属性，静态方法）
+
+3）普通代码块，在创建对象实例时，会被隐式加载
+
+被创建一次，就会调用一次
+
+如果只是使用类的静态成员时，代码块并不会执行
+
+小结：1.static代码块是类加载时，执行，只会执行一次
+
+2.普通代码块是在创建对象时调用，创建一次，调用一次
+
+3.类加载的三种情况
+
+4）**创建一个对象时，在一个类的调用顺序**
+
+① 调用静态代码块和静态属性初始化
+
+② 调用普通代码块和普通属性的初始化
+
+③ 调用构造器
+
+5）构造器的最前面其实隐含了super（）和调用普通代码块
+
+静态代码块和属性初始化，在类加载时就执行完毕，因此优于构造器和普通代码块执行
+
+6）**当创建一个子类对象时，他们的静态代码块，静态属性初始化，普通代码块，普通属性初始化，构造器的调用顺序如下**
+
+① 父类的静态代码块和静态属性
+
+②子类的静态代码块和静态属性
+
+③ 父类的普通代码块和普通属性初始化
+
+④父类的构造器
+
+⑤ 子类的普通代码块和普通属性初始化
+
+⑥子类的构造方法
+
+7）静态代码块中只能直接调用静态成员，普通代码块可以调用任意成员
+
+## 设计模式
+
+静态方法和属性的经典应用
+
+大量的实践中总结和理论化之后优选的代码结构，编程风格结局问题的思考方式经典的棋谱。
+
+```java
+package com.Kameda.single_;
+
+import java.lang.management.GarbageCollectorMXBean;
+
+public class SingTon01 {
+    public static void main(String[] args) {
+        GirlFriend instance = GirlFriend.getInstance();
+        System.out.println(instance);
+//
+    }
+}
+class GirlFriend{
+    private String name;
+    /*
+    1.构造器私有化
+    2。在类内部直接创建
+    3。提供一个公共的静态方法返回gf对象
+     */
+
+    //为了在静态方法中能够返回gf对象 设置成静态[饿汉式]
+    private static GirlFriend gf = new GirlFriend("siyu");
+
+     private  GirlFriend(String name) {
+        this.name = name;
+    }
+
+    public static GirlFriend getInstance(){
+         return gf;
+    }
+
+    @Override
+    public String toString() {
+        return "GirlFriend{" +
+                "name='" + name + '\'' +
+                '}';
+    }
+}
+```
+
+```java
+package com.Kameda.single_;
+/**
+ * 懒汉式单例
+ */
+public class SingleTon02 {
+    public static void main(String[] args) {
+        Cat instance = Cat.getInstance();
+        System.out.println(instance);
+    }
+}
+//希望在程序运行过程中 只能创建一个cat对象
+class Cat {
+    private String name;
+    public static int n1 = 999;
+    private static Cat cat;
+
+    /*
+    1.构造器私有化
+    2。定义static对象
+    3.提供一个public static方法
+    4.懒汉式当用户调用时才会创建
+     */
+    private Cat(String name) {
+        this.name = name;
+    }
+
+    public static Cat getInstance() {
+        if (cat == null) {//如果没有创建
+            cat = new Cat("dun-dun");
+        }
+        return cat;
+    }
+
+    @Override
+    public String toString() {
+        return "Cat{" +
+                "name='" + name + '\'' +
+                '}';
+    }
+}
+```
+
+1.区别在于创建对象的时机不同，懒汉在使用时创建
+
+2.饿汉式不存在线程安全问题，懒汉式存在
+
+3.饿汉式可能存在资源浪费
+
+4.java。lang。Runtime是经典的单例模式源码
+
+## Final
+
+```java
+package com.Kameda.final_;
+public class Final01 {
+    public static void main(String[] args) {
+//        E e = new E();
+//        e.TAX_RATE = 0.9;
+
+    }
+}
+//要求A不能被其他类继承
+final class A {
+
+}
+//class B extends A{}
+class C {
+    //如果要求hi方法不能被子类重写
+    public final void hi() {
+
+    }
+}
+class D extends C {
+//    @Override
+//    public void hi() {
+//        super.hi();
+//    }
+}
+class E {//当某个属性值不希望被修改
+    public final double TAX_RATE = 0.08;
+}
+class F {//某个局部变量不希望被修改
+
+    public void cry() {
+        final double NUM = 0.01;
+//        NUM = 9;
+    }
+}
+```
+
+细节
+
+1.final修饰的属性又叫常量，一般用XX_XXX来命名
+
+2.final修饰的属性在定义时必须赋给初始值且以后不可修改，赋值位置可以在
+
+定义时，构造器中，代码块中
+
+3.如果final修饰的属性是静态不能在构造器中赋值
+
+4.final类不能被继承但可以实例化对象
+
+5.类不是final类，但是含有final方法，可以被继承
+
+6.一般来说如果一个类已经是final类，方法不用加final
+
+7.final不能修饰构造器
+
+8.final与static往往搭配使用，编译器底层优化，不会导致类加载提升效率
+
+9。包装类Integer，Double，Float，Boolean，String都是final类
+
+```java
+package com.Kameda.final_;
+
+public class FinalExercise01 {
+    public static void main(String[] args) {
+        Circle circle = new Circle(9);
+        System.out.println(circle.calArea());
+    }
+}
+class Circle {
+    private double radius;
+    private final double PI;//= 3.14;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    {
+        PI = 3.14;
+    }
+
+    public double calArea() {
+        return PI * radius * radius;
+    }
+}
+```
+
+抽象类（abstract）
+
+当父类的一些方法不能确定时，用Abstract修饰就是抽象类
+
+```java
+package com.Kameda.abstract_;
+
+public class AbstractDetail01 {
+    public static void main(String[] args) {
+        //抽象类不能被实例化
+        //new A();
+    }
+}
+//抽象类不一定要有抽象方法
+abstract class A{
+    public void eat(){
+        System.out.println("qwer");
+    }
+
+}
+//类中有抽象方法必须修饰为抽象类
+//abstract只能修饰类和方法
+//抽象类可以有任何成员【抽象类的本质还是类】
+//如果一个类继承了抽象类，则他必须实现抽象类中的抽象方法
+//抽象方法不能使用关键字 final private static修饰
+```
+
