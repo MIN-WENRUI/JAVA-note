@@ -1,5 +1,3 @@
-# JAVA-note
-Kameda Lab実験室M１　JAVA全栈
 # Java概述
 
 🚩快速学习方法
@@ -6063,7 +6061,7 @@ public class Rice extends Food {
 
 ##### 多态的向下转型
 
-语法：子类类型 引用名 = （子类类型） **父类引用**；
+语法：子类类型 引用名 = （子类类型)**父类引用**；
 
 只能强转父类的引用，但不能强转父类的对象
 
@@ -8137,7 +8135,7 @@ public class House {
 
 5.实例变量不能通过类名.类变量名 方式访问
 
-6.类变量在类加载时就初始化了，即使不创建对象也可以使用
+6.**类变量在类加载时就初始化了**，即使不创建对象也可以使用
 
 7.类变量的生命周期是随着类的加载开始，随着类消亡而销毁
 
@@ -8556,7 +8554,7 @@ class Circle {
 }
 ```
 
-抽象类（abstract）
+##抽象类（abstract）
 
 当父类的一些方法不能确定时，用Abstract修饰就是抽象类
 
@@ -8581,5 +8579,2612 @@ abstract class A{
 //抽象类可以有任何成员【抽象类的本质还是类】
 //如果一个类继承了抽象类，则他必须实现抽象类中的抽象方法
 //抽象方法不能使用关键字 final private static修饰
+```
+
+练习
+
+![截屏2022-11-02 15.07.53](assets/%E6%88%AA%E5%B1%8F2022-11-02%2015.07.53.png)
+
+```java
+package com.Kameda.abstract_;
+
+public class AbstractExercise01 {
+    public static void main(String[] args) {
+        Manager jack = new Manager("jack", 999, 9000);
+        jack.setBonus(9000);
+        jack.work();
+
+        CommonEmployee tom = new CommonEmployee("tom", 999, 9000);
+        tom.work();
+
+    }
+}
+package com.Kameda.abstract_;
+
+ abstract public class Employee {
+    private String name;
+    private int id;
+    private double salary;
+
+    public Employee(String name, int id, double salary) {
+        this.name = name;
+        this.id = id;
+        this.salary = salary;
+    }
+
+    public abstract void work();
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+}
+package com.Kameda.abstract_;
+
+public class Manager extends Employee{
+    private double bonus;
+    public Manager(String name, int id, double salary) {
+        super(name, id, salary);
+    }
+
+    @Override
+    public void work() {
+        System.out.println("经理"+ getName()+"工作中");
+    }
+
+    public double getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(double bonus) {
+        this.bonus = bonus;
+    }
+}
+package com.Kameda.abstract_;
+
+public class CommonEmployee extends  Employee{
+    public CommonEmployee(String name, int id, double salary) {
+        super(name, id, salary);
+    }
+
+    @Override
+    public void work() {
+        System.out.println("普通员工"+getName()+"工作中");
+    }
+}
+```
+
+### 模版设计模式
+
+```java
+package com.Kameda.abstract_;
+
+public class TestTemplate {
+    public static void main(String[] args) {
+        AA aa = new AA();
+        aa.calculateTime();//oop基础
+
+        BB bb = new BB();
+        bb.calculateTime();
+    }
+}
+package com.Kameda.abstract_;
+
+abstract public class Template {
+    public abstract void job();
+
+    public void calculateTime(){
+        long start = System.currentTimeMillis();
+        job();//动态绑定
+        long end = System.currentTimeMillis();
+        System.out.println("任务执行时间" +(end-start));
+    }
+}
+package com.Kameda.abstract_;
+
+public class AA extends Template {
+    public void job() {
+        //得到开始时间
+        long num = 0;
+        for (long i = 1; i <= 10000000; i++) {
+            num += i;
+        }
+
+    }
+}
+package com.Kameda.abstract_;
+
+public class BB extends Template {
+    public void job() {
+        //得到开始时间
+        long num = 0;
+        for (long i = 1; i <= 10000000; i++) {
+            num *= i;
+        }
+
+    }
+}
+```
+
+##🚩接口
+
+Usb插槽就是现实的接口，厂家统一了大小标准排线等
+
+设计需求在php/。net/go中也大量存在
+
+```java
+package com.Kameda.interface_;
+
+public class Interface01 {
+    public static void main(String[] args) {
+        Camera camera = new Camera();
+        Phone phone = new Phone();
+
+        Computer computer = new Computer();
+        computer.work(phone);
+
+        computer.work(camera);
+
+    }
+}
+package com.Kameda.interface_;
+
+public interface UsbInterface {//接口
+    //规定接口相关方法,规范
+    public  void start();
+    public void stop();
+}package com.Kameda.interface_;
+
+public interface UsbInterface {//接口
+    //规定接口相关方法,规范
+    public  void start();
+    public void stop();
+}
+package com.Kameda.interface_;
+
+/**
+ * phone类实现UsbInterface接口规定的方法
+ */
+public class Phone implements UsbInterface{
+    @Override
+    public void start() {
+        System.out.println("手机开始");
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("手机停止");
+    }
+}
+package com.Kameda.interface_;
+
+public class Camera implements UsbInterface{//实现接口，重写接口方法
+    @Override
+    public void start() {
+        System.out.println("相机开始");
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("相机停止");
+    }
+}
+package com.Kameda.interface_;
+
+public class Computer {
+    public void work(UsbInterface usbInterface){
+
+        usbInterface.start();
+        usbInterface.stop();
+    }
+}
+```
+
+本质 就是给出一些没有实现的方法封装到一起，到某个类要使用时再根据具体器情况重写
+
+​        就是更加抽象的抽象类，抽象类里的方法可以有方法体。
+
+体现了程序设计的多态和高内聚低耦合的设计思想
+
+jdk8。0后接口类可以有静态方法，默认方法，即可以有方法的具体实现
+
+```java
+public interface DBInterface { //项目经理
+public void connect();//连接方法
+public void close();//关闭连接 }
+package com.hspedu.interface_;
+//A 程序
+public class MysqlDB implements DBInterface {
+@Override
+public void connect() {
+System.out.println("连接 mysql");
+   }
+@Override
+public void close() {
+System.out.println("关闭 mysql"); }
+}
+
+//B 程序员连接 Oracle
+public class OracleDB implements DBInterface{
+@Override
+public void connect() {
+System.out.println("连接 oracle"); }
+@Override
+public void close() {
+System.out.println("关闭 oracle"); }
+}
+package com.hspedu.interface_;
+public class Interface03 {
+public static void main(String[] args) {
+    MysqlDB mysqlDB = new MysqlDB(); t(mysqlDB);
+OracleDB oracleDB = new OracleDB(); t(oracleDB);
+}
+public static void t(DBInterface db) { db.connect();
+db.close(); }
+}
+```
+
+###细节
+
+1.接口不能被实例化
+
+2.接口中所有的方法是public方法，接口中抽象方法可以不应abstract修饰
+
+3.一个普通类实现接口，就必须将该接口的所有方法实现
+
+4.抽象类实现接口可以不用实现接口的方法
+
+5.一个类可以实现多个接口
+
+6.接口中的属性只能是final，而且是public static final修饰符
+
+7.接口中属性的访问形式：接口。属性名
+
+8.接口不能继承其他类，但可以继承多个别的接口（类和接口是实现关系）
+
+9.接口的修饰符只能是public和默认，这一点和类一样
+
+###实现接口VS继承类
+
+```java
+package com.Kameda.interface_;
+
+public class ExtendsVsInterface {
+    public static void main(String[] args) {
+        LittleMonkey wukong = new LittleMonkey("wukong");
+        wukong.climbing();
+        wukong.swimming();
+        wukong.flying();
+    }
+}
+
+//接口
+interface Fishable {
+    void swimming();
+}
+interface Birdable{
+    void flying();
+}
+
+class Monkey {
+    private String name;
+
+    public Monkey(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void climbing() {
+        System.out.println(name + "会爬树");
+    }
+}
+
+/**
+ * 继承自动拥有父类功能
+ * 子类需要拓展功能可以通过实现接口方式拓展
+ * 实现接口是但继承机制的补充
+ */
+class LittleMonkey extends Monkey implements Fishable,Birdable {//单继承
+
+    public LittleMonkey(String name) {
+        super(name);
+    }
+
+    @Override
+    public void swimming() {
+        System.out.println(getName() + "游泳");
+    }
+
+    @Override
+    public void flying() {
+        System.out.println(getName()+"通过学习会飞翔");
+    }
+}
+```
+
+继承的价值：解决代码的复用性和可维护性
+
+接口的价值：设计好规范方法。即更加灵活
+
+比继承更灵活，一定程度上可以实现代码的解藕
+
+### 接口的多态特性
+
+1.多态参数
+
+UsbInterface usb，即可以接收手机对象又可以接收相机对象，体现了接口的多态
+
+2.多态数组
+
+```java
+package com.Kameda.interface_;
+
+public class InterfacePloyArr {
+    public static void main(String[] args) {
+        //多态数组
+        Usb[] usbs = new Usb[2];
+        usbs[0] = new Phone_();
+        usbs[1] = new Camera_();
+        /*
+给 Usb 数组中，存放 Phone 和
+请遍历 Usb 数组，如果是 Phone 对象，除了调用 Usb 接口定义的方法外， 还需要调用 Phone 特有方法 call
+*/
+        for (int i = 0; i < usbs.length; i++) {
+            usbs[i].work();
+            //类型判断 向下转型
+            if(usbs[i] instanceof Phone_){//判断运行类型
+                ((Phone_) usbs[i]).call();
+            }
+        }
+    }
+}
+
+interface Usb {
+    void work();
+}
+
+class Phone_ implements Usb {
+    public void call() {
+        System.out.println("手机可以打电话");
+    }
+
+    @Override
+    public void work() {
+        System.out.println("手机工作中");
+    }
+}
+
+class Camera_ implements Usb {
+    @Override
+    public void work() {
+        System.out.println("相机工作中");
+    }
+}
+```
+
+3.接口的多态传递
+
+```java
+package com.Kameda.interface_;
+
+/**
+ * 演示多态传递现象
+ */
+public class InterfacePloyPass {
+    public static void main(String[] args) {
+        IG ig = new Teacher();//接口类型的变量可以指向，实现了该接口的类的对象实例
+        //如果IG继承了IH接口，而Teacher类实现了IG接口
+        //那么Teacher也实现了IH接口，这就是多态传递现象
+        IH ih = new Teacher();
+
+    }
+}
+
+interface IH {
+    void eat();
+}
+
+interface IG extends IH {
+}
+
+class Teacher implements IG {
+    @Override
+    public void eat() {
+
+    }
+}
+```
+
+练习
+
+```java
+public class InterfaceExercise02 {
+public static void main(String[] args) {
+} }
+interface A { // 1min 看看 int x = 0;
+} //想到 等价 public static final int x = 0;
+class B {
+int x = 1;
+} //普通属性
+class C extends B implements A { public void pX() {
+//System.out.println(x); //错误，原因不明确 x
+    //可以明确的指定 x
+//访问接口的 x 就使用 A.x //访问父类的 x 就使用 super.x System.out.println(A.x + " " + super.x);
+}
+public static void main(String[] args) { new C().pX();
+} }
+```
+
+## 🚩内部类
+
+如果定义类在局部位置(方法中/代码块) :(1) 局部内部类 (2) 匿名内部类
+
+定义在成员位置 (1) 成员内部类 (2) 静态内部类
+
+类的五大成员：属性，方法，构造器，代码块，内部类
+
+```java
+package com.Kameda.InnerClass;
+
+public class InnerClass01 {
+    public static void main(String[] args) {
+
+    }
+}
+class Outer{//外部类
+    private int n1  = 100;
+
+    public Outer(int n1) {
+        this.n1 = n1;
+    }
+
+    public void m1(){
+        System.out.println("m1()");
+    }
+    {
+        System.out.println("代码块");
+    }
+    class Inner{//内部类
+
+    }
+}
+```
+
+### 局部内部类
+
+```java
+package com.Kameda.InnerClass;
+
+public class LocalInnerClass {
+    public static void main(String[] args) {
+        Outer02 outer02 = new Outer02();
+        outer02.m1();
+        System.out.println(outer02.hashCode());
+    }
+}
+class Outer02{//外部类
+    private int n1 = 100;
+    private void m2(){
+        System.out.println("m2");
+    }
+    public void m1(){
+        //1.局部内部类定义在外部类的局部位置，通常在方法中
+        //4.作用域：仅仅定义在它 的方法体或代码块中
+        String name= "vvv";
+        final class Inner02{//3.相当于局部变量，不能添加访问修饰符，final修饰可以
+            //2.可以访问外部类的所有成员，包括是私有的
+            private int n1 = 800;
+            public void f1(){
+                //5.局部内部类可以直接访问外部类的成员
+                //7.如果外部类和局部内部类的成员重名时，默认遵循就近原则
+                //如果想访问外部类成员时，使用（this.成员）访问
+                System.out.println("n1=" + n1);
+                //Outer02.this 本质就是外部类的对象，哪个对象调用m1。Outer01.this就是哪个对象
+                System.out.println(Outer02.this.n1);
+                System.out.println(Outer02.this.hashCode());
+                //m2
+                m2();
+            }
+        }
+        //6。外部类在方法中，可以创建Inner02对象，然后嗲用方法即可
+        Inner02 inner02 = new Inner02();
+        inner02.f1();
+
+    }
+
+
+}
+```
+
+### **匿名内部类**
+
+```java
+package com.Kameda.InnerClass;
+
+/**
+ * 演示匿名内部使用
+ */
+public class AnonymousInnerClass {
+    public static void main(String[] args) {
+        Outer04 outer04 = new Outer04();
+        outer04.method();
+    }
+}
+
+class Outer04 {
+    private int n1 = 10;
+
+    public void method() {
+        //基于接口的匿名内部类
+//        Tiger tiger = new Tiger();
+//        tiger.cry();//每个类只使用一次
+        IA tiger = new IA() {//简化开发 运行类型就是匿名内部类
+            @Override
+            public void cry() {
+                System.out.println("老虎叫");
+            }
+        };
+        //jdk底层分配  匿名内部类类名$1,马上创建了Outer04$1实例，并把地址返回给tiger
+        //匿名内部类使用一次就不能再使用
+        System.out.println("tiger运行类型" + tiger.getClass());
+        tiger.cry();
+//        new Outer04$1; 用完即死
+
+        //演示基于类的匿名内部类
+        /*
+        class Outer04$2 extends Father{
+        }
+         */
+        //同时直接返回匿名内部类的对象
+        Father father = new Father("MIN") {//传递给构造器
+            @Override
+            public void test() {
+                System.out.println("匿名内部类重写test方法");
+            }
+        };
+        System.out.println(father.getClass());
+        father.test();
+        //基于抽象类的匿名内部类
+        Animal animal = new Animal() {
+            @Override
+            void eat() {
+                System.out.println("小狗吃骨头");
+            }
+        };
+        animal.eat();
+
+    }
+}
+
+interface IA {
+    public void cry();
+}
+
+//class Tiger implements IA{
+//    @Override
+//    public void cry() {
+//        System.out.println("老虎叫");
+//    }
+//}
+class Father {
+    public Father(String name) {
+
+    }
+
+    public void test() {
+
+    }
+}
+
+abstract class Animal {
+    abstract void eat();
+}
+```
+
+#### 细节
+
+```java
+package com.Kameda.InnerClass;
+
+import com.sun.scenario.effect.impl.sw.java.JSWBlend_SRC_OUTPeer;
+
+public class AnonymousInnerClassDetail {
+    public static void main(String[] args) {
+        Outer05 outer05 = new Outer05();
+        outer05.f1();
+    }
+}
+class Outer05{
+    private int i = 99;
+    public void f1(){
+        //不能添加访问修饰符 地位相当于局部变量
+        //作用域在它 的方法和代码块中
+
+        Person person = new Person() {
+            private int i = 88;
+            @Override
+            public void hi() {
+                System.out.println("匿名内部类");
+                System.out.println(i);
+                System.out.println(Outer05.this.i);
+            }
+        };
+        person.hi();//动态绑定
+
+        //也可以直接调用
+        new Person(){
+            @Override
+            public void hi() {
+                System.out.println("直接调用");
+
+            }
+
+            @Override
+            public void ok(String str) {
+                super.ok(str);
+            }
+        }.ok("MIN");
+    }
+}
+class Person{
+    public void hi(){
+        System.out.println("Person hi()");
+    }
+    public void ok(String str){
+        System.out.println("person ok()");
+    }
+}
+```
+
+练习
+
+```java
+package com.Kameda.InnerClass;
+
+public class InnerExercise02 {
+    public static void main(String[] args) {
+/*
+1.有一个铃声接口 Bell，里面有个 ring 方法。(右图)
+2.有一个手机类 Cellphone，具有闹钟功能 alarmClock，参数是 Bell 类型(右图)
+3.测试手机类的闹钟功能，通过匿名内部类(对象)作为参数，打印:懒猪起床了
+4.再传入另一个匿名内部类(对象)，打印:小伙伴上课了
+*/
+        CellPhone cellPhone = new CellPhone();
+        /**
+         * 1。传递的是实现了Bell接口的匿名内部类
+         * 2。重写了ring（）
+         * 3。
+         */
+        cellPhone.alarmClock(new Bell() {
+            @Override
+            public void ring() {
+                System.out.println("懒猪起床");
+            }
+        });
+        cellPhone.alarmClock(new Bell() {
+            @Override
+            public void ring() {
+                System.out.println("小伙伴上课");
+            }
+        });
+    }
+}
+interface Bell{
+    void ring();
+}
+class CellPhone{
+    public void alarmClock(Bell bell){
+        System.out.println(bell.getClass());
+        bell.ring();
+    }
+}
+```
+
+### 成员内部类
+
+```java
+package com.Kameda.InnerClass;
+
+public class MemberInnerClass01 {
+    public static void main(String[] args) {
+        Outer08 outer08 = new Outer08();
+        outer08.t1();
+        //外部其他类，使用成员内部类的三种方式
+        //解读
+        //new Inner08();相当于外部类的成员
+        Outer08.Inner08 inner08 = outer08.new Inner08();
+        //2 在外部中编写一个方法返回Inner08的实例
+        Outer08.Inner08 inner08Instance = outer08.getInner08Instance();
+        inner08Instance.say();
+    }
+}
+
+class Outer08 {
+    private int n1 = 10;
+    public String name = "MIN";
+
+    //1。成员内部类，定义在外部类的成员位置
+    //2。可以添加任意访问修饰符
+    //3。作用域在整个类体中
+    class Inner08 {//成员内部类
+        private int sal = 90000;
+        private int n1 = 66;
+
+        public void say() {
+            //可以直接访问外部类的所有成员，包括私有的
+            System.out.println(n1 + name);
+            //内部类与外部类重名，遵循就近原则
+            //外部类名.this.成员访问
+        }
+    }
+
+    //使用成员内部类
+    //创建成员内部类的对象，直接调用
+    public void t1() {
+        Inner08 inner08 = new Inner08();
+        inner08.say();
+        System.out.println(inner08.sal);
+
+    }
+
+    public Inner08 getInner08Instance() {
+        return new Inner08();
+    }
+}
+```
+
+### 静态内部类
+
+```java
+package com.Kameda.InnerClass;
+
+public class StaticInnerClass {
+    public static void main(String[] args) {
+        Outer10 outer10 = new Outer10();
+        outer10.m1();
+        //外部其他类访问静态内部类
+        //1.满足权限类名直接访问
+        Outer10.Inner10 inner10 = new Outer10.Inner10();
+        inner10.say();
+        //2。写方法，可以返回静态内部类的对象实例
+        Outer10.Inner10 inner101 = outer10.getInner10();
+        inner101.say();
+
+        Outer10.Inner10 inner10_ = Outer10.getInner10_();
+        inner10_.say();//不想创建外部类
+    }
+}
+
+class Outer10 {
+    private int n1 = 10;
+    private static String name = "min";
+
+    private static void cry() {
+
+    }
+
+    //1.放在外部类的成员位置
+    //2。用static修饰
+    //3.不能访问非静态成员
+    //4.可以添加访问修饰符修饰
+    //5.作用域为整个类体
+    //成员内部类，静态内部类 是放在成员位置上本质，就是一个成员
+    static class Inner10 {
+        private static String name = "Kameda";
+        public void say() {
+            System.out.println(name);
+            cry();
+            System.out.println(Outer10.name);//静态无需this
+        }
+
+    }
+
+    public void m1() {//访问静态内部类方式，创建对象在访问
+        Inner10 inner10 = new Inner10();
+        inner10.say();
+    }
+
+    public Inner10 getInner10() {
+        return new Inner10();
+    }
+
+    public static Inner10 getInner10_() {
+        return new Inner10();
+    }
+}
+```
+
+# 枚举和注解
+
+##枚举
+
+enumeration：一组常量的集合；属于一种特殊的类，里面只包含一组有限的特定的对象
+
+###自定义实现枚举
+
+```java
+package com.Kameda.enum_;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class Enumeration02 {
+    public static void main(String[] args) {
+        System.out.println(Season.AUTUMN);
+
+    }
+}
+//演示自定义枚举
+class Season {
+    private String name;
+    private String desc;
+    public static Season SPRING = new Season("Spring", "warm");
+    public static Season WINTER = new Season("Winter", "clod");
+    public static Season AUTUMN = new Season("Summer", "hot");
+    public static Season SUMMER = new Season("Autumn", "clam");
+    /*
+    1.构造器私有化
+    2。去掉setXxx方法，防止属性被修改
+    3。在Season内部直接创建固定对象
+    4.加final final加static会底层优化不加载类
+     */
+     private Season(String name, String desc) {
+        this.name = name;
+        this.desc = desc;
+    }
+
+    public String getName() {
+        return name;
+    }
+    public String getDesc() {
+        return desc;
+    }
+
+    @Override
+    public String toString() {
+        return "Season{" +
+                "name='" + name + '\'' +
+                ", desc='" + desc + '\'' +
+                '}';
+    }
+}
+/*
+1.不需要提供setXXX方法，因为枚举对象值通常为只读
+2.对枚举对象/属性使用final+stasic共同修饰，实现底层优化
+3.枚举对象名通常使用全部大写
+4.枚举对象根据需要也可以有多个变量
+*/
+```
+
+###enum关键字实现枚举
+
+```java
+package com.Kameda.enum_;
+
+import javax.swing.*;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class Enumeration03 {
+    public static void main(String[] args) {
+        System.out.println(Season.AUTUMN);
+    }
+}
+enum Season02 {
+    //常量名 实参列表
+    SPRING("春天","Warm"),
+    WINTER("Winter", "clod"),
+    AUTUMN("Autumn", "clam"),
+    SUMMER("Summer", "hot");
+    //写在前面
+    private String name;
+    private String desc;
+//    public static Season SPRING = new Season("Spring", "warm");
+//    public static Season WINTER = new Season("Winter", "clod");
+//    public static Season AUTUMN = new Season("Summer", "hot");
+//    public static Season SUMMER = new Season("Autumn", "clam");
+    //如果使用了 enum 来实现枚举类
+//1. 使用关键字 enum 替代 class
+//2. public static final Season SPRING = new Season("春天", "温暖") 直接使用 // SPRING("春天", "温暖") 解读 常量名(实参列表)
+//3. 如果有多个常量(对象)， 使用 ,号间隔即可
+//4. 如果使用 enum 来实现枚举，要求将定义常量对象，写在前面
+//5. 如果我们使用的是无参构造器，创建常量对象，则可以省略 ()
+
+    private Season02(String name, String desc) {
+        this.name = name;
+        this.desc = desc;
+    }
+
+    public String getName() {
+        return name;
+    }
+    public String getDesc() {
+        return desc;
+    }
+
+    @Override
+    public String toString() {
+        return "Season{" +
+                "name='" + name + '\'' +
+                ", desc='" + desc + '\'' +
+                '}';
+    }
+}
+```
+
+###enum 关键字实现枚举注意事项
+
+1.当我们使用enum 关键字开发一个枚举类时，默认会继承Enum类, 而且是一个final 类[如何证明],
+
+2.传统的 public static final Season2 SPRING = new Season2("春天", "温暖"); 简化成 SPRING("春天", "温暖")， 这里必 须知道，它调用的是哪个构造器.
+
+3.如果使用无参构造器创建枚举对象，则实参列表和小括号都可以省略
+
+4.当有多个枚举对象时，使用,间隔，最后有一个分号结尾 5) 枚举对象必须放在枚举类的行首.
+
+###enum常2用方法说明
+
+1.  toString:Enum 类已经重写过了，返回的是当前对象 名,子类可以重写该方法，用于返回对象的属性信息
+2.  name:返回当前对象名(常量名)，子类中不能重写
+3.   ordinal:返回当前对象的位置号，默认从 0 开始
+4.   values:返回当前枚举类中所有的常量
+5. valueOf:将字符串转换成枚举对象，要求字符串必须为已有的常量名，否则报异常!
+6. compareTo:比较两个枚举常量，比较的就是编号!
+
+```JAVA
+package com.Kameda.enum_;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ * 演示Enum类的各种使用方法
+ */
+public class EnumMethod {
+    public static void main(String[] args) {
+        Season02 autumn = Season02.AUTUMN;
+        System.out.println(autumn.name());
+        //输出的是该枚举对象的编号 从0开始编号
+        System.out.println(autumn.ordinal());
+        //反编译可以看到values方法 返回Season2【】
+        Season02[] values = Season02.values();
+        System.out.println("=====遍历取出枚举对象=======");
+        for(Season02 season:values){//增强for循环
+            //依次从数组中取出数据赋给对象，取出完毕则退出
+            System.out.println(season);
+
+        }
+        //将字符串转换成枚举对象
+        //根据输入的字符串到枚举对象中查找，没有则报错
+        Season02 season02 = Season02.valueOf("AUTUMN");
+        System.out.println(season02);
+
+        //compareto：比较两个枚举常量，比较的就是编号
+        System.out.println(Season02.AUTUMN.compareTo(Season02.SPRING));
+        //输出的结果是编号相减
+    }
+}
+
+```
+
+### 练习
+
+```java
+package com.Kameda.enum_;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class EnumExercise02 {
+    public static void main(String[] args) {
+        //获取所有编剧对象
+        Week[] weeks = Week.values();
+        System.out.println("====全部週の情報以下======");
+        for(Week week : weeks){
+            System.out.println(week);
+        }
+
+    }
+}
+ /*
+       声明 Week 枚举类，其中包含星期一至星期日的定义;
+       MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;
+       使用 values 返回所有的枚举数组, 并遍历 , 输出左图效果
+       */
+enum  Week{
+    MONDAY("月曜日"),TUESDAY("火曜日"),WEDNESDAY("水曜日"),
+     THURSDAY("木曜日"),FRIDAY("金曜日"),SATURDAY("土曜日"),
+     SUNDAY("日曜日");
+     private String name;
+
+    private Week(String name) {
+         this.name = name;
+     }
+
+     @Override
+     public String toString() {
+         return  name;
+     }
+ }
+```
+
+### enum实现接口
+
+```java
+package com.Kameda.enum_;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class EnumDetail {
+    public static void main(String[] args) {
+        Music.CLASSICMUSIC.playing();
+    }
+}
+class A{
+
+}
+//1.使用 enum 关键字后，就不能再继承其它类了，因为 enum 会隐式继承 Enum，而 Java 是单继承机制 //enum Season3 extends A {
+//
+//}
+//2.enum 实现的枚举类，仍然是一个类，所以还是可以实现接口的.
+interface  IPlaying{
+    public void playing();
+}
+enum Music implements IPlaying{
+    CLASSICMUSIC;
+
+    @Override
+    public void playing() {
+
+    }
+}
+```
+
+## 注解（Annotation）
+
+1. 注解(Annotation)也被称为元数据(Metadata)，用于修饰解释包、类、方法、属性、构造器、局部变量等数据信息。
+
+2. 和注释一样，注解不影响程序逻辑，但注解可以被编译或运行，相当于嵌入在代码中的补充信息。
+
+3. 在JavaSE中，注解的使用目的比较简单，例如标记过时的功能，忽略警告等。在JavaEE中注解占据了更重要的角色，例如用来配置应用程序的任何切面，代替 java EE 旧版中所遗留的繁冗代码和 XML 配置等。
+
+    
+
+使用 Annotation 时要在其前面增加 @ 符号, 并把该 Annotation 当成一个修饰符使用。用于修饰它支持的程序元 素
+
+###三个基本的 Annotation:
+
+1.   @Override: 限定某个方法，是重写父类方法, 该注解只能用于方法
+2.   @Deprecated: 用于表示某个程序元素(类, 方法等)已过时
+3.   @SuppressWarnings: 抑制编译器警告
+
+```java
+package com.Kameda.annotation_;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class Override_ {
+    public static void main(String[] args) {
+
+    }
+}
+
+class Father {//父类
+
+    public void fly() {
+        System.out.println("Father fly...");
+    }
+
+}
+
+class Son extends Father {//子类
+
+    @Override //说明:表示重写了父类的fly方法
+    /*
+    1。如果写了@Override注解，编译器会检查是否重写父类方法，如果没有重写，
+    编译器报错
+    2。@Target(ElementType.METHOD)
+      @Retention(RetentionPolicy.SOURCE)
+      public @interface Override {
+       }
+    @interface表示一个注解类
+    3。@Target修饰注解的注解 成为元注解
+     */
+    public void fly() {
+        System.out.println("Son fly....");
+    }
+}
+```
+
+@Deprecated 过时注解案例
+
+```java
+package com.Kameda.annotation_;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class Deprecated {
+    public static void main(String[] args) {
+        A a = new A();
+        System.out.println(a.n1);
+    }
+}
+//表示该元素已经过时，不推荐使用
+//查看注解类的源码
+//可以修饰方法，类。字段，包，参数等
+//可以做版本兼容过度使用
+/*
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target(value={CONSTRUCTOR, FIELD, LOCAL_VARIABLE, METHOD, PACKAGE, PARAMETER, TYPE})
+public @interface Deprecated {
+}
+ */
+@java.lang.Deprecated
+class A{
+    public int n1 =10;
+    @java.lang.Deprecated
+    public void hi(){
+
+    }
+}
+```
+
+@SuppressWarning注解案例
+
+```java
+package com.Kameda.annotation_;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class SuppressWarnings_ {
+
+    //使用注解抑制警告信息
+    //可以指定等警告类型是
+// //all，抑制所有警告
+// //boxing，抑制与封装/拆装作业相关的警告
+// //cast，抑制与强制转型作业相关的警告
+// //dep-ann，抑制与淘汰注释相关的警告
+// //deprecation，抑制与淘汰的相关警告
+// //fallthrough，抑制与 switch 陈述式中遗漏 break 相关的警告
+// //finally，抑制与未传回 finally 区块相关的警告
+// //hiding，抑制与隐藏变数的区域变数相关的警告
+// //incomplete-switch，抑制与 switch 陈述式(enum case)中遗漏项目相关的警告
+// //javadoc，抑制与 javadoc 相关的警告
+    // //nls，抑制与非 nls 字串文字相关的警告
+// //null，抑制与空值分析相关的警告
+// //rawtypes，抑制与使用 raw 类型相关的警告
+// //resource，抑制与使用 Closeable 类型的资源相关的警告
+// //restriction，抑制与使用不建议或禁止参照相关的警告
+// //serial，抑制与可序列化的类别遗漏 serialVersionUID 栏位相关的警告
+// //static-access，抑制与静态存取不正确相关的警告
+// //static-method，抑制与可能宣告为 static 的方法相关的警告
+// //super，抑制与置换方法相关但不含 super 呼叫的警告
+// //synthetic-access，抑制与内部类别的存取未最佳化相关的警告
+// //sync-override，抑制因为置换同步方法而遗漏同步化的警告
+// //unchecked，抑制与未检查的作业相关的警告
+// //unqualified-field-access，抑制与栏位存取不合格相关的警告
+// //unused，抑制与未用的程式码及停用的程式码相关的警告
+    //4。作用范围与放置位置有关
+    //5。源码
+    /*
+    @Target({TYPE, FIELD, METHOD, PARAMETER, CONSTRUCTOR, LOCAL_VARIABLE})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface SuppressWarnings {
+        String[] value();
+}
+     */
+    @SuppressWarnings({"unchecked", "rawtypes", "unused"})
+    public static void main(String[] args) {
+        List list = new ArrayList();
+        list.add("jack");
+        list.add("tom");
+        list.add("mary");
+        int i;
+        System.out.println(list.get(1));
+    }
+}
+```
+
+###Jdk的元注解
+
+JDK 的元 Annotation 用于修饰其他 Annotation
+
+1. Retention //指定注解的作用范围，三种 SOURCE,CLASS,RUNTIME
+2. Target // 指定注解可以在哪些地方使用
+3. Documented //指定该注解是否会在 javadoc 体现
+4. Inherited //子类会继承父类注解
+
+只能用于修饰一个 Annotation 定义, 用于指定该 Annotation 可以保留多长时间, @Rentention 包含一个 RetentionPolicy 类型的成员变量, 使用 @Rentention 时必须为该 value 成员变量指定值:
+ @Retention 的三种值
+
+1.   RetentionPolicy.SOURCE: 编译器使用后，直接丢弃这种策略的注释
+2.   RetentionPolicy.CLASS: 编译器将把注解记录在 class 文件中. 当运行 Java 程序时, JVM 不会保留注解。这是默认值
+3. RetentionPolicy.RUNTIME:编译器将把注解记录在 class 文件中. 当运行 Java 程序时, JVM 会保留注解. 程序可以通过反射获取该注解
+
+##练习
+
+```java
+package com.Kameda.homework;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class HomeWork01 {
+    public static void main(String[] args) {
+        Car car = new Car();
+        Car car1 = new Car(100);
+        System.out.println(car);
+        System.out.println(car1);
+    }
+}
+class Car{
+    double price = 10;
+    static String color = "white";
+    public String toString(){
+        return price+ "\t"+color;
+    }
+    public Car(){
+        this.price = 9;
+        this.color = "red";
+    }
+    public Car(double price) {
+        this.price = price;
+    }
+
+}
+```
+
+```java
+package com.Kameda.homework;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class HomeWork02 {
+    public static void main(String[] args) {
+
+    }
+}
+class Frock{
+    private int serialNumber;
+    private static int currentNum = 100000;
+    public Frock() {
+        serialNumber = getNextNum();
+    }
+    public static int getNextNum(){
+        currentNum+=100;
+        return  currentNum;
+    }
+
+    public int getSerialNumber() {
+        return serialNumber;
+    }
+
+}
+class TestFrock{
+    public static void main(String[] args) {
+        System.out.println(Frock.getNextNum());
+        System.out.println(Frock.getNextNum());
+        Frock frock = new Frock();
+        Frock frock1 = new Frock();
+        Frock frock2 = new Frock();
+        System.out.println(frock.getSerialNumber());
+        System.out.println(frock1.getSerialNumber());
+        System.out.println(frock2.getSerialNumber());
+    }
+}
+```
+
+```java
+package com.Kameda.homework;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class HomeWork03 {
+    public static void main(String[] args) {
+        Cat cat = new Cat();
+        Dog dog = new Dog();
+        cat.shout();
+        dog.shout();
+    }
+}
+
+abstract class Animal {
+    public abstract void shout();
+}
+
+class Cat extends Animal {
+    public void shout() {
+        System.out.println("みいおみいお");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    public void shout() {
+        System.out.println("わんわん");
+    }
+}
+```
+
+```java
+package com.Kameda.homework;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class HomeWork04 {
+    public static void main(String[] args) {
+        CellPhone cellPhone = new CellPhone();
+        //
+        cellPhone.testWork(new ICalculate() {
+            @Override
+            public double work(double n1, double n2) {
+                return n1*n2;
+            }
+        },8,9);
+    }
+}
+/*
+1.计算器接口具有work方法，功能是运算，有一个手机类CellPhone。
+  定义方法testWork测试计算功能，嗲用计算接口work的方法
+2。要求调用CellPhone对象的testWork方法，使用匿名内部类
+ */
+interface ICalculate{
+    public double work(double n1,double n2);
+}
+class CellPhone{
+    public void testWork(ICalculate iCalculate,double n1,double n2){
+        double result = iCalculate.work(n1, n2);
+        System.out.println("結果"+result);
+    }
+}
+```
+
+```java
+package com.Kameda.homework;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class HomeWork05 {
+    public static void main(String[] args) {
+        A a = new A();
+        a.f1();
+    }
+}
+class A{
+    private  String NAME="こんにちは";
+    public void f1(){
+        class B{
+            private final String NAME ="MIN";
+            public void show(){
+                System.out.println("NAME" + NAME +"外部"+ A.this.NAME);
+            }
+        }
+        B b = new B();
+        b.show();
+    }
+}
+```
+
+```java
+package com.Kameda.homework;
+
+import com.sun.corba.se.impl.orbutil.HexOutputStream;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class HomeWork06 {
+    public static void main(String[] args) {
+        Person min = new Person("MIN", new Boat());
+        min.common();
+        min.passRiver();
+        min.passFireHill();
+    }
+}
+
+interface Vehicles {
+    public void work();
+}
+
+class Horse implements Vehicles {
+    @Override
+    public void work() {
+        System.out.println("一般的に馬を使う");
+    }
+}
+
+class Boat implements Vehicles {
+    @Override
+    public void work() {
+        System.out.println("川を渉時船を使う");
+    }
+}
+
+class Plane implements Vehicles {
+    @Override
+    public void work() {
+        System.out.println("火焰山飞机");
+    }
+}
+
+class VehiclesFactory {
+    private static Horse horse = new Horse();//饿汉式
+
+    public static Horse getHorse() {
+        //马始终是同一批
+
+        return horse;
+    }
+
+    public static Boat getBoat() {
+        return new Boat();
+    }
+    public static Plane getPlane(){
+        return new Plane();
+    }
+}
+
+class Person {
+    private String name;
+    private Vehicles vehicles;
+    //创建人对象事先分配交通工具
+
+    public Person(String name, Vehicles vehicles) {
+        this.name = name;
+        this.vehicles = vehicles;
+    }
+
+    public void passRiver() {
+        //先取得一个船
+//        Boat boat = VehiclesFactory.getBoat();
+//        boat.work();
+        //只要不是船就要获取
+        if (!(vehicles instanceof Boat)) {
+            vehicles = VehiclesFactory.getBoat();
+
+        }
+        vehicles.work();
+    }
+
+    public void common() {
+        //判断
+        if (!(vehicles instanceof Horse)) {
+            vehicles = VehiclesFactory.getHorse();
+        }
+        //体现接口调用
+        vehicles.work();
+    }
+
+    public void passFireHill() {
+        if (!(vehicles instanceof Plane)){
+            vehicles =VehiclesFactory.getPlane();
+        }
+        vehicles.work();
+    }
+}
+```
+
+```java
+package com.Kameda.homework;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class HomeWork07 {
+    public static void main(String[] args) {
+        Car2 car2 = new Car2(60);
+        car2.getAir().flow();
+        Car2 car21 = new Car2(-9);
+        car21.getAir().flow();
+        Car2 car22 = new Car2(20);
+        car22.getAir().flow();
+    }
+}
+/*
+
+ */
+class Car2{
+    private double temperature;
+
+    public Car2(double temperature) {
+        this.temperature = temperature;
+    }
+
+    class Air{
+        public void flow(){
+            if(temperature>40){
+                System.out.println("エアコンの冷房");
+            } else if (temperature<0) {
+                System.out.println("エアコンの暖房");
+            }else{
+                System.out.println("温度正常、エアコン閉めて");
+            }
+        }
+    }
+    public Air getAir(){
+        return new Air();
+    }
+}
+```
+
+```java
+package com.Kameda.homework;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class HomeWork08 {
+    public static void main(String[] args) {
+        //枚举值的switch使用方法
+        Color green = Color.YELLOW;
+        green.show();
+       //switch()中放入枚举对象
+        switch (green) {
+            case RED:
+                System.out.println("匹配到黄色");
+                break;
+            case GREEN:
+                System.out.println("匹配到绿色");
+                break;
+            default:
+                System.out.println("没有匹配到");
+        }
+    }
+}
+
+interface IMIN {
+    public void show();
+}
+
+enum Color implements IMIN {
+    RED(255, 0, 0),
+    BLUE(0, 0, 255),
+    YELLOW(255, 255, 0),
+    GREEN(0, 255, 0);
+
+    private int redValue;
+    private int greenValue;
+    private int blueValue;
+
+    Color(int redValue, int greenValue, int blueValue) {
+        this.redValue = redValue;
+        this.greenValue = greenValue;
+        this.blueValue = blueValue;
+    }
+
+
+    @Override
+    public void show() {
+        System.out.println("属性值" + redValue + greenValue + blueValue);
+    }
+}
+```
+
+#异常（Exception）
+
+java语言中，将程序执行中发生的不正常情况称为“异常”。
+
+Error（错误）：jvm无法解决的严重问题。如系统错误，资源耗尽等严重情况StackOverflowError和oom，Error是严重错误，程序会崩溃。
+
+Exception：其他编程错误或偶然外在因素导致的一般性问题，可以使用针对性的代码进行处理。。例如空指针访问，试图读取不存在的文件，网络连接中断等。Exception又分为两大类运行时异常，编译时异常。
+
+## 异常体系图
+
+![截屏2022-11-08 16.46.00](assets/%E6%88%AA%E5%B1%8F2022-11-08%2016.46.00.png)
+
+1.运行时异常，编译器检查不出来。一般指编程时的逻辑错误，尽量避免。java。lang.Runtime
+
+Exception类及其子类都是运行时的异常
+
+2.对于运行时异常可以不做处理，，若全处理对程序的可读性和运行效率产生影响。
+
+3.编译时异常，是编译器要求必须处置的异常。
+
+## 常见的运行时异常
+
+1. \1)  NullPointerException 空指针异常
+2. \2)  ArithmeticException 数学运算异常
+3. \3)  ArrayIndexOutOfBoundsException 数组下标越界异常
+4. \4)  ClassCastException 类型转换异常
+5. \5)  NumberFormatException 数字格式不正确异常[]
+
+```java
+package com.Kameda.Exception_;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class ClassCastException {
+    public static void main(String[] args) {
+        A b = new B();
+        B b2 = (B)b;
+        C c2 =(C)b;//抛出异常
+    }
+}
+class A{}
+class B extends A{
+
+}
+class C extends A{}
+
+```
+
+## 常见的编译时异常
+
+![截屏2022-11-08 16.55.03](assets/%E6%88%AA%E5%B1%8F2022-11-08%2016.55.03.png)
+
+##异常处理
+
+1）try-catch-finally
+
+自己捕获自行处理
+
+<img src="assets/%E6%88%AA%E5%B1%8F2022-11-08%2017.01.26.png" alt="截屏2022-11-08 17.01.26" style="zoom:67%;" />
+
+2）throws
+
+将发生的异常抛出，交给调用者处理，最顶级的处理者是JVm
+
+<img src="assets/%E6%88%AA%E5%B1%8F2022-11-08%2017.02.00.png" alt="截屏2022-11-08 17.02.00" style="zoom:67%;" />
+
+try-catch 异常处理及细节
+
+```java
+package com.Kameda.try_;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class TryCatchDetail {
+    public static void main(String[] args) {
+
+        try {
+            String str = "8989";
+            int a = Integer.parseInt(str);
+            System.out.println("数字:" + a);
+        } catch (NumberFormatException e) {
+            System.out.println("异常信息为"+ e);
+        }finally {
+            System.out.println("finally执行");
+        }
+        System.out.println("继续");
+    }
+}
+```
+
+```java
+package com.Kameda.try_;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class TryCatchDetail02 {
+    public static void main(String[] args) {
+        //1.如果 try 代码块有可能有多个异常
+        //2.可以使用多个 catch 分别捕获不同的异常，相应处理
+        // 3.要求子类异常写在前面，父类异常写在后面
+        try {
+            Person person = new Person();
+            person = null;
+            System.out.println(person.getName());//NullPointerException
+            int n1 = 10;
+            int n2 = 0;
+            int res = n1 / n2;//ArithmeticException
+        } catch (NullPointerException e){
+            System.out.println(e.getMessage());
+        } catch(ArithmeticException e) {
+            System.out.println(e.getMessage());
+        }finally {
+
+        }
+
+    }
+}
+
+class Person {
+    private String name = "jack";
+
+    public String getName() {
+        return name;
+    }
+}
+package com.Kameda.try_;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class TryCatchDetail03 {
+    public static void main(String[] args) {
+       /*
+     可以进行 try-finally 配合使用, 这种用法相当于没有捕获异常，
+      因此程序会直接崩掉/退出。应用场景，就是执行一段代码，
+      不管是否发生异常，都必须执行某个业务逻辑
+     */
+        try{
+            int n1=10;
+            int n2 = 0;
+            System.out.println(n1/n2);
+        }finally {
+            System.out.println("执行了 finally..");
+        }
+        System.out.println("程序继续执行..");
+    }
+}
+
+```
+
+try-finally
+
+应用场景就是执行一段代码，不管是否发生异常都必须执行某个业务逻辑
+
+经典应用场景
+
+```java
+package com.Kameda.try_;
+
+import java.util.Scanner;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class TryCatchExercise04 {
+    public static void main(String[] args) {
+        /*
+        用户输入的不是整数就反复提醒他输入
+
+         */
+        Scanner scanner = new Scanner(System.in);
+        int num=0;
+        while (true){
+            try {
+                System.out.println("请输入整数");
+                num=Integer.parseInt(scanner.next());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("输入的不是一个整数");
+            }
+        }
+        System.out.println("输入值为"+ num);
+
+    }
+}
+```
+
+细节
+
+```java
+package com.Kameda.throws_;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class ThrowsDetail {
+    public static void main(String[] args) {
+
+    }
+
+    public void f2() {
+        //1.对于编译异常，程序必须处理，如try-catch或者throws
+        //2。对于运行时异常，程序中如果没有处理，默认就是throws的方式处理
+        int n1 = 10;
+        int n2 = 0;
+        double res = n1 / n2;
+    }
+    public static void f1() {
+        try {
+            f3();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static void f3() throws FileNotFoundException {
+        FileInputStream fis = new FileInputStream("d://aa.txt");
+    }
+    public static void f4(){
+        //f5()抛出的是运行异常
+        //java中对此有默认处理机制
+    }
+    public static void f5()throws ArithmeticException{
+
+    }
+}
+
+class Father { //父类
+    public void method() throws RuntimeException {
+    }
+}
+
+class Son extends Father {//子类
+
+    //3. 子类重写父类的方法时，对抛出异常的规定:子类重写的方法，
+// 所抛出的异常类型要么和父类抛出的异常一致，要么为父类抛出的异常类型的子类型
+// 4. 在 throws 过程中，如果有方法 try-catch , 就相当于处理异常，就可以不必 throws
+    @Override
+    public void method() throws ArithmeticException {
+    }
+}
+```
+
+## 自定义异常
+
+当程序中出现了某些错误，但该错误信息并没有在Throwable子类中描述处理，这个时候可以自己设计异常类，用于描述该错误信息。
+
+步骤
+
+1）定义类：自定义异常类名 extends RuntimeException
+
+2）继承Exception，属于编译异常
+
+3）继承runtimeException属于运行异常
+
+```java
+package com.Kameda.customexception;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class CustomException {
+    public static void main(String[] args) {
+        int age = 80;
+        if(!(age>=18&&age<=120)){
+            throw new AgeException("年龄在18到120之间");
+        }
+        System.out.println("你的年龄范围正常");
+
+    }
+}
+//自定义异常
+class AgeException extends RuntimeException{
+    public AgeException(String message) {//构造器
+        super(message);
+    }
+}
+```
+
+throw和throws区别
+
+<img src="assets/%E6%88%AA%E5%B1%8F2022-11-08%2020.30.49.png" alt="截屏2022-11-08 20.30.49" style="zoom:50%;" />
+
+练习
+
+```java
+package com.Kameda.HomeWork;
+
+import com.Kameda.Exception_.ArrayIndexOutofBoundsException_;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class Homework01 {
+    public static void main(String[] args) {
+        /*
+        编写应用程序EcmDef.java，接收命令行的两个参数，计算两数相除
+        计算两个数相除，要求使用方法cal(int n1,int n2)
+        对数据格式不正确，缺少命令行参数，除零进行异常处理
+         */
+
+
+        try {
+            if (args.length!=2){
+                throw new ArrayIndexOutOfBoundsException("参数个数不对");
+            }
+            int n1=Integer.parseInt(args[0]);
+            int n2=Integer.parseInt(args[1]);
+
+            double res = cal(n1,n2);
+            System.out.println(res);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println(e.getMessage());
+        }catch (NumberFormatException e){
+            System.out.println("参数格式不正确");
+        }catch (ArithmeticException e){
+            System.out.println("出现了分母为零对异常");
+        }
+
+    }
+    public static double cal(int n1,int n2){
+        return n1/n2;
+    }
+}
+/*
+就是看catch会不会让try结束，不结束就依次执行,结束就先执行finally
+ */
+```
+
+#包装类
+
+\1) 针对八种基本数据类型相应的引用类型—包装类 2) 有了类的特点，就可以调用类中的方法。
+
+<img src="assets/%E6%88%AA%E5%B1%8F2022-11-10%2014.44.35.png" alt="截屏2022-11-10 14.44.35" style="zoom:67%;" />
+
+<img src="assets/%E6%88%AA%E5%B1%8F2022-11-10%2014.45.43.png" alt="截屏2022-11-10 14.45.43" style="zoom:67%;" />
+
+![截屏2022-11-10 14.46.02](assets/%E6%88%AA%E5%B1%8F2022-11-10%2014.46.02.png)
+
+包装类和基本数据类型的转换
+
+```java
+package com.Kameda.wrapper;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class Integer01 {
+    public static void main(String[] args) {
+        int n1 =100;
+        Integer integer = new Integer(n1);
+        Integer integer1 = Integer.valueOf(n1);
+
+        int i = integer.intValue();
+
+        //jdk5后
+        int n2= 200;
+        Integer integer2=n2;//底层原理调用valueOf方法
+        int n3 = integer2;
+    }
+}
+```
+
+练习
+
+```java
+package com.Kameda.wrapper;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class WrapperExercise01 {
+    public static void main(String[] args) {
+        Double d = 100d;
+        Float f= 1.5f;
+
+        Object obj1= true? new Integer(1):new Double(2.0);
+        System.out.println(obj1);//三元运算符是一个整体
+
+        Object obj2;
+        if (true)
+            obj2 = new Integer(1);
+        else
+            obj2 = new Double(2.0);
+        System.out.println(obj2);
+    }
+}
+```
+
+包装类型和 String 类型的相互转换
+
+```java
+package com.Kameda.wrapper;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class WrapperVSString {
+    public static void main(String[] args) {
+        //包装类(Integer)->String
+        Integer i = 100;//自动装箱
+        //方式1
+        String str1 = i + "";
+        //方式2
+        String str2 = i.toString();
+        //方式 3
+        String str3 = String.valueOf(i);
+        //String -> 包装类(Integer)
+        String str4 = "12345";
+        Integer i2 = Integer.parseInt(str4);//使用到自动装箱
+        Integer i3 = new Integer(str4);//其中构造器可以
+        System.out.println("ok~~");
+    }
+}
+```
+
+Integer 类和 Character 类的常用方法
+
+```java
+package com.Kameda.wrapper;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class WrapperMethod {
+    public static void main(String[] args) {
+        System.out.println(Integer.MIN_VALUE); //返回最小值
+        System.out.println(Integer.MAX_VALUE);//返回最大值
+        System.out.println(Character.isDigit('a'));//判断是不是数字
+        System.out.println(Character.isLetter('a'));//判断是不是字母
+        System.out.println(Character.isUpperCase('a'));//判断是不是大写
+        System.out.println(Character.isLowerCase('a'));//判断是不是小写
+        System.out.println(Character.isWhitespace('a'));//判断是不是空格
+        System.out.println(Character.toUpperCase('a'));//转成大写
+        System.out.println(Character.toLowerCase('A'));//转成小写
+    }
+}
+```
+
+Integer 类面试题
+
+```java
+package com.Kameda.wrapper;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class WrapperExercise02 {
+    public static void main(String[] args) {
+        Integer i = new Integer(1);
+        Integer j = new Integer(1);
+        System.out.println(i == j); //False //所以，这里主要是看范围 -128 ~ 127 就是直接返回
+        /*
+              如果 i 在 IntegerCache.low(-128)~IntegerCache.high(127),就直接从数组返回 //2. 如果不在 -128~127,就直接 new Integer(i)
+              public static Integer valueOf(int i) {
+              if (i >= IntegerCache.low && i <= IntegerCache.high)
+                return IntegerCache.cache[i + (-IntegerCache.low)]; return new Integer(i);
+        } */
+        Integer m = 1; //底层 Integer.valueOf(1); -> 阅读源码
+        Integer n = 1;//底层 Integer.valueOf(1);
+        System.out.println(m == n); //T //所以，这里主要是看范围 -128 ~ 127 就是直接返回 //，否则，就 new Integer(xx);
+        Integer x = 128;//底层 Integer.valueOf(1);
+        Integer y = 128;//底层 Integer.valueOf(1);
+        System.out.println(x == y);//False
+
+    }
+}
+```
+
+```java
+package com.Kameda.wrapper;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class WrapperExercise03 {
+    public static void main(String[] args) {
+        //示例一
+        Integer i1 = new Integer(127);
+        Integer i2 = new Integer(127);
+        System.out.println(i1 == i2);//F
+//示例二
+        Integer i3 = new Integer(128);
+        Integer i4 = new Integer(128);
+        System.out.println(i3 == i4);//F
+//示例三
+        Integer i5 = 127;//底层Integer.valueOf(127);
+        Integer i6 = 127;//-128~127
+        System.out.println(i5 == i6); //T
+//示例四
+        Integer i7 = 128;
+        Integer i8 = 128;
+        System.out.println(i7 == i8);//F
+        // 示例五
+        Integer i9 = 127; //Integer.valueOf(127)
+        Integer i10 = new Integer(127);
+        System.out.println(i9 == i10);//F
+//示例六
+        Integer i11 = 127;
+        int i12 = 127;
+//只有有基本数据类型，==判断的是值是否相同
+        System.out.println(i11 == i12); //T
+        // 示例七
+        Integer i13 = 128;
+        int i14 = 128;
+        System.out.println(i13 == i14);//T
+    }
+}
+```
+
+## String类
+
+String对象用于保存字符串，也就是一组字符序列
+
+字符串常量对象使用双引号阔气的字符序列
+
+字符串使用unicode编码，一个字符占两个字节
+
+String类常用的构造器
+
+```java
+package com.Kameda.string_;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class String01 {
+    public static void main(String[] args) {
+        //String对象用于保存字符串，也就是一组字符序列
+        //字符串常量对象使用双引号阔气的字符序列
+        //字符串使用unicode编码，一个字符占两个字节
+        //String类有很多构造器，构造器的重载
+        // 常用的有 String s1 = new String();
+        //String s2 = new String(String original);
+        //String s3 = new String(char[] a);
+        //String s4 = new String(char[] a,int startIndex,int count)
+        //String s5 = new String(byte[] b)
+        //5. String 类实现了接口 Serializable【String 可以串行化:可以在网络传输】
+        //                 接口 Comparable [String 对象可以比较大小】
+        // 6. String 是 final 类，不能被其他的类继承
+        //7. String 有属性 private final char value[]; 用于存放字符串内容
+        //8. 一定要注意:value 是一个 final 类型，不可以修改:即 value 不能指向
+       // 新的地址，但是单个字符内容是可以变化
+        String name = "jack";
+        name ="tom";
+        final char value[] = {'a','b','c'};
+        char[] v2 = {'t','H'};
+        value[0] = 'H';
+        //value = v2;
+
+    }
+}
+```
+
+创建String对象的两种方式
+
+方式1:直接赋值String s ="KAMEDA";
+
+方式2:调用构造器String 是= new String（“KAMEDA”）;
+
+方式1：先从常量池查看是否有“KAMEDA”空间，如果有直接指向，没有创建后指向。s最终指向常量池的空间地址
+
+方式2:先在对中创建空间，里面维护了value属性，指向常量池中的KAMEDA空间，如果没有重新创建，如果有直接通过value指向。最终指向的是堆中空间地址。
+
+<img src="assets/%E6%88%AA%E5%B1%8F2022-11-10%2018.37.28.png" alt="截屏2022-11-10 18.37.28" style="zoom: 50%;" />
+
+字符串的特性
+
+1）String是一个final类，代表不可变的字符序列
+
+2）字符串是不可变的。一个字符串对象一旦被分配，其内容是不可改变的
+
+**重要规则**：常量相加；看到是池。变量相加，是在堆中。看源码学习
+
+<img src="assets/%E6%88%AA%E5%B1%8F2022-11-10%2021.00.09.png" alt="截屏2022-11-10 21.00.09" style="zoom:100%;" />
+
+String常见方法
+
+```java
+package com.Kameda.string_;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class StringMethod {
+    public static void main(String[] args) {
+        //1. equals 前面已经讲过了. 比较内容是否相同，区分大小写
+        String str1 = "hello";
+        String str2 = "Hello";
+        System.out.println(str1.equals(str2));//
+       // 2.equalsIgnoreCase 忽略大小写的判断内容是否相等
+        String username = "johN";
+        if ("john".equalsIgnoreCase(username)) {
+            System.out.println("Success!");
+        } else {
+            System.out.println("Failure!");
+        }
+        // 3.length 获取字符的个数，字符串的长度
+        System.out.println("KAMEDA".length());
+        // 4.indexOf 获取字符在字符串对象中第一次出现的索引，索引从 0 开始，如果找不到，返回-1
+        String s1 = "wer@terwe@g";
+        int index = s1.indexOf('@');
+        System.out.println(index);// 3
+        System.out.println("weIndex=" + s1.indexOf("we"));//0
+        // 5.lastIndexOf 获取字符在字符串中最后一次出现的索引，索引从 0 开始，如果找不到，返回-1
+        s1 = "wer@terwe@g@";
+        index = s1.lastIndexOf('@');
+        System.out.println(index);//11
+        System.out.println("ter 的位置=" + s1.lastIndexOf("ter"));//4
+       // 6.substring 截取指定范围的子串
+        String name = "hello,みんさん";
+       //下面 name.substring(6) 从索引 6 开始截取后面所有的内容
+        System.out.println(name.substring(6));//截取后面的字符
+        //name.substring(0,5)表示从索引 0 开始截取，截取到索引 5-1=4 位置
+        System.out.println(name.substring(2, 5));//llo
+    }
+}
+```
+
+```java
+package com.Kameda.string_;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class StringMethod02 {
+    public static void main(String[] args) {
+        // 1.toUpperCase 转换成大写
+        String s = "heLLo";
+        System.out.println(s.toUpperCase());//HELLO
+        // 2.toLowerCase
+        System.out.println(s.toLowerCase());//hello
+        // 3.concat 拼接字符串
+        String s1 = "宝玉";
+        s1 = s1.concat("林黛玉").concat("薛宝钗").concat("together");
+        System.out.println(s1);//宝玉林黛玉薛宝钗 together
+        // 4.replace 替换字符串中的字符
+        s1 = "宝玉 and 林黛玉 林黛玉 林黛玉";
+        //在 s1 中，将 所有的 林黛玉 替换成薛宝钗
+        //  s1.replace() 方法执行后，返回的结果才是替换过的.
+        // 注意对 s1 没有任何影响
+        String s11 = s1.replace("宝玉", "jack");
+        System.out.println(s1);//宝玉 and 林黛玉 林黛玉 林黛玉
+        System.out.println(s11);//jack and 林黛玉 林黛玉 林黛玉
+        // 5.split 分割字符串, 对于某些分割字符，我们需要 转义比如 | \\等
+        String poem = "锄禾日当午,汗滴禾下土,谁知盘中餐,粒粒皆辛苦";
+        // 1. 以 , 为标准对 poem 进行分割 , 返回一个数组
+        // 2. 在对字符串进行分割时，如果有特殊字符，需要加入 转义符 \
+        String[] split = poem.split(",");
+        poem = "E:\\aaa\\bbb";
+        split = poem.split("\\\\");
+        System.out.println("==分割后内容===");
+        for (int i = 0; i < split.length; i++) {
+            System.out.println(split[i]);
+        }
+        // 6.toCharArray 转换成字符数组
+        s = "happy";
+        char[] chs = s.toCharArray();
+        for (int i = 0; i < chs.length; i++) {
+            System.out.println(chs[i]);
+        }
+        /*7. compareTo 比较两个字符串的大小，如果前者大，则返回正数，后者大，则返回负数，如果相等，返回 0
+        (1) 如果长度相同，并且每个字符也相同，就返回 0
+        (2) 如果长度相同或者不相同，但是在进行比较时，可以区分大小
+        就返回 if (c1 != c2) {
+            return c1 - c2;
+        }
+        (3) 如果前面的部分都相同，就返回 str1.len - str2.len
+        */
+        String a = "jac";// len = 3
+        String b = "jack";// len = 4
+        System.out.println(a.compareTo(b)); // 返回值是 'c' - 'a' = 2 的值
+        // 8.format 格式字符串
+        /* 占位符有:
+         * %s 字符串 %c 字符 %d 整型 %.2f 浮点型 *
+         */
+        String name = "john";
+        int age = 10;
+        double score = 56.857090909;
+        char gender = '男';
+        //将所有的信息都拼接在一个字符串.
+        String info = "我的姓名是" + name + "年龄是" + age + ",成绩是" + score + "性别是" + gender+"希望大家能喜欢我";
+        System.out.println(info);
+
+        //1. %s , %d , %.2f %c 称为占位符
+        //2. 这些占位符由后面变量来替换
+        //3. %s 表示后面由 字符串来替换
+        //4. %d 是整数来替换
+        //5. %.2f 表示使用小数来替换，替换后，只会保留小数点两位, 并且进行四舍五入的处理
+        // 6. %c 使用 char 类型来替换
+        String formatStr = "我的姓名是%s 年龄是%d，成绩是%.2f 性别是%c.希望大家喜欢我!";
+        String info2 = String.format(formatStr, name, age, score, gender);
+        System.out.println("info2=" + info2);
+
+
+    }
+}
+```
+
+###StringBuffer类
+
+代表可变的字符串序列，可以对字符串内容进行增删
+
+很多方法与String相同，但StringBuffer是可变长度
+
+StringBuffer是一个容器
+
+```java
+package com.Kameda.stringbuffer_;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class StringBuffer01 {
+    public static void main(String[] args) {
+//1. StringBuffer 的直接父类 是 AbstractStringBuilder
+//2. StringBuffer 实现了 Serializable, 即 StringBuffer 的对象可以串行化
+//3. 在父类中 AbstractStringBuilder 有属性 char[] value,不是 final
+// 该 value 数组存放 字符串内容，引出存放在堆中的
+//4. StringBuffer 是一个 final 类，不能被继承
+//5. 因为 StringBuffer 字符内容是存在 char[] value, 所有在变化(增加/删除)
+// 不用每次都更换地址(即不是每次创建新对象)， 所以效率高于 String//private final char value[]
+        StringBuffer stringBuffer = new StringBuffer();
+    }
+}
+```
+
+String和StringBuffer的相互转换
+
+```java
+package com.Kameda.stringbuffer_;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class StringAndStringBuffer {
+    public static void main(String[] args) {
+        String str = "hello tom";
+       //方式 1 使用构造器
+       //注意: 返回的才是 StringBuffer 对象，对 str 本身没有影响
+        StringBuffer stringBuffer = new StringBuffer(str);
+       //方式 2 使用的是 append 方法
+        StringBuffer stringBuffer1 = new StringBuffer();
+        stringBuffer1 = stringBuffer1.append(str);
+
+        //看看 StringBuffer ->String
+        StringBuffer stringBuffer3 = new StringBuffer("KAMEDA LAB");
+        //方式 1 使用 StringBuffer 提供的 toString 方法
+        String s = stringBuffer3.toString();
+        //方式 2: 使用构造器来搞定
+        String s1 = new String(stringBuffer3);
+    }
+}
+```
+
+StringBuffer的常见方法
+
+```java
+package com.Kameda.stringbuffer_;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class StringBufferMethod {
+    public static void main(String[] args) {
+        StringBuffer s = new StringBuffer("hello");
+       //增
+        s.append(',');// "hello,"
+        s.append("张三丰");//"hello,张三丰"
+        s.append("赵敏").append(100).append(true).append(10.5);//"hello,张三丰赵敏 100true10.5"
+        System.out.println(s);//"hello,张三丰赵敏 100true10.5"
+        //删
+        /*
+        *删除索引为 >= start && <end 处的字符
+        * 解读:删除 11 ~14 的字符[11, 14)
+        */
+        s.delete(11, 14);
+        System.out.println(s);//"hello,张三丰赵敏 true10.5"
+         //改
+        //使用 周芷若 替换 索引 9-11 的字符 [9,11)
+        s.replace(9, 11, "周芷若");
+        System.out.println(s);//"hello,张三丰周芷若 true10.5"
+        // 查找指定的子串在字符串第一次出现的索引，如果找不到返回-1
+        int indexOf = s.indexOf("张三丰");
+        System.out.println(indexOf);//6
+        //插
+        //在索引为 9 的位置插入 "赵敏",原来索引为 9 的内容自动后移
+        s.insert(9, "赵敏");
+        System.out.println(s);//"hello,张三丰赵敏周芷若 true10.5"
+        //长度
+        System.out.println(s.length());//22 System.out.println(s);
+    }
+}
+```
+
+练习
+
+```java
+package com.Kameda.stringbuffer_;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class StringBufferExercise02 {
+    public static void main(String[] args) {
+        /*
+         输入商品名称和商品价格，要求打印效果示例, 使用前面学习的方法完成: 商品名 商品价格
+         手机 123,564.59 //比如 价格 3,456,789.88 要求:价格的小数点前面每三位用逗号隔开, 在输出。
+          思路分析
+         1. 定义一个 Scanner 对象，接收用户输入的 价格(String)
+         2. 希望使用到 StringBuffer 的 insert ，
+         需要将 String 转成 StringBuffer 3. 然后使用相关方法进行字符串的处理
+         */
+        String price = "12345345343454.59";
+        StringBuffer sb = new StringBuffer(price);
+//        int i = sb.lastIndexOf(".");
+
+        for (int j = sb.lastIndexOf(".")-3; j >0 ; j-=3) {
+
+            sb= sb.insert(j, ",");
+        }
+        System.out.println(sb);
+
+    }
+}
+```
+
+###StringBuilder类
+
+是一个可变字符序列。此类提供一个与StringBuffer兼容的API，但不保证同步。此类被设计用作StringBuffer的一个简易替换，用在字符串缓冲区被单个线程使用时，建议优先使用。
+
+```java
+package com.Kameda.stringbuilder_;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class StringBuilder01 {
+    public static void main(String[] args) {
+        //1. StringBuilder 继承 AbstractStringBuilder 类
+        //2. 实现了 Serializable ,说明 StringBuilder 对象是可以串行化(对象可以网络传输,可以保存到文件)
+        //3. StringBuilder 是 final 类, 不能被继承
+        //4. StringBuilder 对象字符序列仍然是存放在其父类 AbstractStringBuilder 的 char[] value;
+        // 因此，字符序列是堆中
+        //5. StringBuilder 的方法，没有做互斥的处理,即没有 synchronized 关键字,因此在单线程的情况下使用
+        //  StringBuilder
+        StringBuilder stringBuilder = new StringBuilder();
+    }
+}
+```
+
+<img src="assets/%E6%88%AA%E5%B1%8F2022-11-11%2017.02.20.png" alt="截屏2022-11-11 17.02.20" style="zoom:50%;" />
+
+```java
+package com.Kameda.stringbuilder_;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class StringVsStringBufferVsStringBuilder {
+    public static void main(String[] args) {
+
+        long startTime = 0L;
+        long endTime = 0L;
+        StringBuffer buffer = new StringBuffer("");
+        startTime = System.currentTimeMillis();
+        for (int i = 0; i < 80000; i++) {//StringBuffer 拼接 20000 次
+            buffer.append(String.valueOf(i));
+        }
+        endTime = System.currentTimeMillis();
+        System.out.println("StringBuffer 的执行时间:" + (endTime - startTime));
+
+        StringBuilder builder = new StringBuilder("");
+        startTime = System.currentTimeMillis();
+        for (int i = 0; i < 80000; i++) {//StringBuilder 拼接 20000 次
+            builder.append(String.valueOf(i));
+        }
+        endTime = System.currentTimeMillis();
+        System.out.println("StringBuilder 的执行时间:" + (endTime - startTime));
+
+        String text = "";
+        startTime = System.currentTimeMillis();
+        for (int i = 0; i < 80000; i++) {//String 拼接 20000
+            text = text + i;
+        }
+        endTime = System.currentTimeMillis();
+        System.out.println("String 的执行时间:" + (endTime - startTime));
+
+    }
+}
+/*
+1.如果字符串存在大量修改，一般使用StringBuffer或者StringBuilder
+2。单线程使用StringBuilder，多线程使用StringBuffer
+3。很少修改，被多个对象应用使用String，配置信息等
+ */
+```
+
+
+
+## Math类
+
+```java
+package com.Kameda.math_;
+
+/**
+ * @Author: Bill.MIN
+ * @Version: Kameda Lab
+ */
+public class MathMethod {
+    public static void main(String[] args) {
+        //1.abs 绝对值
+        int abs = Math.abs(-9);
+        System.out.println(abs);//9
+        //2.pow 求幂
+        double pow = Math.pow(2, 4);//2 的 4 次方 System.out.println(pow);//16
+        //3.ceil 向上取整,返回>=该参数的最小整数(转成 double);
+        double ceil = Math.ceil(3.9);
+        System.out.println(ceil);//4.0
+        //4.floor 向下取整，返回<=该参数的最大整数(转成 double)
+        double floor = Math.floor(4.001);
+        System.out.println(floor);//4.0
+        //5.round 四舍五入 Math.floor(该参数+0.5)
+        long round = Math.round(5.51);
+        System.out.println(round);//6
+        //6.sqrt 求开方
+        double sqrt = Math.sqrt(729);
+        System.out.println(sqrt);//3.0
+        //7.random 求随机数
+        // random 返回的是 0 <= x < 1 之间的一个随机小数
+        // 思考:请写出获取 a-b 之间的一个随机整数,a,b 均为整数 ，比如 a = 2, b=7
+        // 即返回一个数 x 2<=x<=7
+        // Math.random() * (b-a) 返回的就是 0 <= 数 <= b-a
+        //(1) (int)(a) <= x <= (int)(a + Math.random() * (b-a +1) )
+        //(2) 使用具体的数介绍 a=2 b=7
+        // (int)(a + Math.random() * (b-a +1) ) = (int)( 2 + Math.random()*6)
+        // Math.random()*6 返回的是 0 <= x < 6 小数
+        // 2 + Math.random()*6 返回的就是 2<= x < 8 小数
+        // (int)(2 + Math.random()*6) = 2 <= x <= 7
+        // (3) 公式就是 (int)(a + Math.random() * (b-a +1) )
+        for (int i = 0; i < 100; i++) {
+        }
+        System.out.println((int) (2 + Math.random() * (7 - 2 + 1)));
+        //max , min 返回最大值和最小值
+        int min = Math.min(1, 9);
+        int max = Math.max(45, 90);
+        System.out.println("min=" + min);
+        System.out.println("max=" + max);
+    }
+}
 ```
 
